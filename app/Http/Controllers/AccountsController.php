@@ -14,7 +14,7 @@ class AccountsController extends Controller
      */
     public function index()
     {
-
+        return Accounts::all();
     }
 
     /**
@@ -24,7 +24,7 @@ class AccountsController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,7 @@ class AccountsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return Accounts::create($request->all());
     }
 
     /**
@@ -46,7 +46,7 @@ class AccountsController extends Controller
      */
     public function show($id)
     {
-        //
+        return Accounts::find($id);
     }
 
     /**
@@ -69,7 +69,10 @@ class AccountsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $account = Accounts::findOrFail($id);
+        $account->update($request->all());
+
+        return $account;
     }
 
     /**
@@ -80,6 +83,9 @@ class AccountsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $account = Accounts::findOrFail($id);
+        $account->update(['status'=>0]);
+
+        return $account;
     }
 }
