@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/destroy/{id}', 'AccountsController@destroy');
+Route::resource('accounts', 'AccountsController');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

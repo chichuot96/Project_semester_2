@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Accounts;
+
+use App\Http\Resources\AccountResource as AccountResource;
+use App\User;
 use Illuminate\Http\Request;
 
 class AccountsController extends Controller
@@ -14,7 +16,7 @@ class AccountsController extends Controller
      */
     public function index()
     {
-        return Accounts::all();
+        return  AccountResource::collection(User::all());
     }
 
     /**
@@ -35,7 +37,7 @@ class AccountsController extends Controller
      */
     public function store(Request $request)
     {
-        return Accounts::create($request->all());
+        return new AccountResource(User::create($request->all()));
     }
 
     /**
@@ -46,7 +48,7 @@ class AccountsController extends Controller
      */
     public function show($id)
     {
-        return Accounts::find($id);
+        return new AccountResource( User::find($id));
     }
 
     /**
@@ -69,10 +71,10 @@ class AccountsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $account = Accounts::findOrFail($id);
-        $account->update($request->all());
+        $user = User::findOrFail($id);
+        $user->update($request->all());
 
-        return $account;
+        return new AccountResource($user);
     }
 
     /**
@@ -83,9 +85,9 @@ class AccountsController extends Controller
      */
     public function destroy($id)
     {
-        $account = Accounts::findOrFail($id);
-        $account->update(['status'=>0]);
+        $user = User::findOrFail($id);
+        $user->update(['status'=>0]);
 
-        return $account;
+        return new AccountResource($user);
     }
 }
