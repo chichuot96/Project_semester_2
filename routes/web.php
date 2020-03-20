@@ -24,3 +24,9 @@ Route::resource('accounts', 'AccountsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@adminIndex')->name('admin');
+Route::get('/getCurrentUser', function() {
+    return Auth::user()->load('roles');
+});
+
+Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('logout');
