@@ -28,5 +28,5 @@ Route::get('/admin', 'HomeController@adminIndex')->name('admin');
 Route::get('/getCurrentUser', function() {
     return Auth::user()->load('roles');
 });
-
+Route::get('mail/send', 'MailController@send');
 Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('logout');
