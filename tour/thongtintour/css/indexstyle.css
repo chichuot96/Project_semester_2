@@ -1,0 +1,141 @@
+#thongtintour{
+  font-family: Tahoma;
+  font-size: 13px;
+  width: 1000px;
+  margin: 0px auto;
+}
+
+
+#menutour{
+  background: #000;
+  height: 30px;
+  position: fixed;
+  width: 1000px;
+}
+
+#menutour ul{
+  margin: 0;
+  padding: 0;
+}
+
+#menutour ul li{
+  list-style: none;
+  float: left;
+
+}
+
+#menutour ul li a.active{
+  background-color: #ccc;
+
+}
+
+#menutour ul li a{
+  text-decoration: none;
+  display: block;
+  color: white;
+  line-height: 30px;
+  height: 30px;
+  padding: 0 25px;
+  border-right: 1px solid #fff;
+}
+
+#menutour ul li a:hover{
+  color: orange;
+
+}
+
+#bannertour{
+  background: blue;
+  height: 250px;
+  width: 1000px;
+}
+
+#maintour{
+  margin-top: 10px;
+
+}
+
+#mainlefttour {
+  width: 700px;
+  float: left;
+  min-height: 400px;
+
+}
+
+#mainlefttour ul{
+  margin: 0px;
+  padding: 0px;
+  margin: 10px;
+}
+
+#mainlefttour ul li{
+  list-style: none;
+  border-bottom: 1px solid #000;
+  float: left;
+  margin-bottom: 20px;
+  padding: 8px;
+}
+
+#mainlefttour ul li img{
+  float: left;
+  margin-right: 10px;
+  clear: left;
+  width: 130px;
+  height: 100px;
+}
+
+#mainlefttour ul li h2{
+  font-size: 15px;
+  margin-top: 0;
+}
+
+#mainrighttour{
+  width: 300px;
+  float: right;
+  min-height: 400px;
+}
+
+#mainrighttour #menu_righttour ul{
+  margin:0;
+  padding: 0;
+  border-left: 1px dashed #000;
+  border-right: 1px dashed #000;
+
+}
+
+#mainrighttour #menu_righttour ul li{
+  list-style: none;
+}
+
+#mainrighttour #menu_righttour h3{
+  background: #194d58 url('../images/menu.png') no-repeat 2px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 40px;
+  color: white;
+  height: 40px;
+  text-indent: 40px;
+}
+
+#mainrighttour #menu_righttour ul li a{
+  display: block;
+  text-decoration: none;
+  line-height: 30px;
+  border-bottom: 1px solid #000;
+  color: black;
+  padding: 13px;
+  background: url(../images/radio-button-2-457824.png) no-repeat;
+  background-size: 30px;
+  background-position: 5px;
+  text-indent: 25px;
+}
+
+#mainrighttour #menu_righttour ul li a:hover{
+  color: orange;
+}
+
+#mainrighttour #banner_righttour img{
+  height: 600px;
+}
+
