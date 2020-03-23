@@ -24,3 +24,8 @@ Route::resource('accounts', 'AccountsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => 'auth'], function() {
+    Route::resource('tour', 'TourController');
+    Route::post('ckeditor/image_upload',
+        'CKEditorController@upload')->name('upload');
+});

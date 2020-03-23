@@ -1,7 +1,8 @@
+@extends('layouts.app')
 <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 @section('content')
     <div class="container">
-        <h2>Add new category</h2>
+        <h2>Add new Tour</h2>
         <form class="form" method="post"
               action="{{asset('tour')}}" enctype="multipart/form-data">
             @csrf
@@ -60,7 +61,8 @@
         </form>
     </div>
     <script>
-        CKEDITOR.replace( 'description',{filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+        CKEDITOR.replace( 'description',
+            {filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
             filebrowserUploadMethod: 'form'} );
     </script>
 @endsection
