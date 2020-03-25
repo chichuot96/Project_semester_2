@@ -23,7 +23,6 @@ class CreateUsersTable extends Migration
             $table->string('address');
             $table->date('date_of_birth');
             $table->boolean('status');
-            $table->integer('role');
 
         });
     }
