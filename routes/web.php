@@ -24,9 +24,19 @@ Route::resource('accounts', 'AccountsController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin', 'HomeController@adminIndex')->name('admin');
-Route::get('/getCurrentUser', function() {
-    return Auth::user()->load('roles');
-});
-Route::get('mail/send', 'MailController@send');
-Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::resource('tour', 'TourController');
+Route::post('ckeditor/image_upload',
+    'CKEditorController@upload')->name('upload');
+//Route::group(['middleware' => 'auth'], function() {
+//    Route::resource('tour', 'TourController');
+//    Route::post('ckeditor/image_upload',
+//        'CKEditorController@upload')->name('upload');
+//});
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
