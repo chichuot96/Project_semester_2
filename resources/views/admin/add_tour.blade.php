@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+
 @section('content')
     <div class="container">
         <h2>Add new Tour</h2>
@@ -8,21 +8,23 @@
             @csrf
             <div class="form-group">
                 <label for="status">Destination</label>
-                <select class="form-control" name="status">
-                    <option value="">foreach vô đây nha bebe </option>
-                    <option value=""></option>
-                    <option value=""></option>
+                <select class="form-control" name="destination">
+                    @foreach($lsDes as $Des)
+                    <option value="{{$Des->id}}">{{$Des->destination_name}}</option>
+                        @endforeach
                 </select>
                 <br>
                 <label for="usr">Tour name</label>
-                <input type="file" name="tour_name">
+                <input type="text" class="form-control" name="tour_name" required="true">
                 <br>
                 <label for="usr">Start at</label>
-                <input type="date" class="form-control" name="start_at"  required="true">
+                <input type="text" class="form-control" name="start_at"  required="true">
                 <br>
                 <label for="Category">Category</label>
                 <select class="form-control" name="category">
-                    <option value="">for nha chí</option>
+                    @foreach($lsCat as $Cat)
+                    <option value="{{$Cat->id}}">{{$Cat->name}}</option>
+                        @endforeach
                 </select>
                 <br>
                 <label for="usr">Price</label>
@@ -46,7 +48,7 @@
                 <br>
                 <label for="usr">Description</label>
                 <br>
-                <textarea name="description" rows="8" cols="150"  required="true"></textarea>
+                <textarea class="form-control" name="description" id="description"  cols="680"  rows="15"></textarea>
                 <br>
                 <label for="usr">Vehicle</label>
                 <input type="text" class="form-control" name="vehicle"  required="true">
@@ -60,9 +62,13 @@
             <input type="submit" value="Add" />
         </form>
     </div>
-    <script>
+    <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
+    <script type="text/javascript">
         CKEDITOR.replace( 'description',
             {filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-            filebrowserUploadMethod: 'form'} );
+                filebrowserUploadMethod: 'form'} );
     </script>
-@endsection
+    @endsection
+
+
+
