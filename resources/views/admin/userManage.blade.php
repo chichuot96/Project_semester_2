@@ -32,15 +32,16 @@
                         <td>{{$u->status}}</td>
                         <td>
                             @if($u->status==1)
-                                <a class="btn btn-danger" href="{{route('delete',['id'=>$u->id])}}" > delete</a>
+                                <a class="btn btn-danger" href="{{route('delete',['id'=>$u->id,'request'=>$request])}}" > delete</a>
                             @else
-                                <a class="btn btn-success" href="{{route('active',['id'=>$u->id])}}" > active</a>
+                                <a class="btn btn-success" href="{{route('active',['id'=>$u->id,'request'=>$request])}}" > active</a>
                             @endif
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+            {{$users->render()}}
         </div>
 
     </div>

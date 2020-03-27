@@ -45,5 +45,5 @@ return [
      */
 
     'expires' => env('VIEW_CHECK_EXPIRATION', true),
-
+    'pagination' => 'pagination::slider-3',
 ];

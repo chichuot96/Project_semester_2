@@ -21,9 +21,9 @@ class AccountsController extends Controller
             ->join('role_user','users.id','=','role_user.user_id')
             ->join('roles','role_user.role_id','=','roles.id')
             ->select('users.*','roles.name')
-            ->get();
-
-        return view('admin.userManage',['users'=>$users]);
+            ->paginate(10);
+        $request=null;
+        return view('admin.userManage',['users'=>$users,'request'=>$request]);
 
     }
 
@@ -85,24 +85,19 @@ class AccountsController extends Controller
         return new AccountResource($user);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy($id,Request $request)
     {
         $user = User::findOrFail($id);
         $user->update(['status'=>0]);
 
-        return redirect('accounts');
+        return $this->search($request);
     }
 
-    public function active($id){
+    public function active($id,Request $request){
         $user = User::findOrFail($id);
         $user->update(['status'=>1]);
-        return redirect('accounts');
+        return $this->search($request);
     }
 
     public function search(Request $request){
@@ -113,8 +108,8 @@ class AccountsController extends Controller
             ->where('full_name','like','%'.$text.'%')
             ->orWhere('email','like','%'.$text.'%')
             ->select('users.*','roles.name')
-            ->get();
+            ->paginate(10);
 
-        return view('admin.userManage',['users'=>$users]);
+        return view('admin.userManage',['users'=>$users,'request'=>$request]);
     }
 }
