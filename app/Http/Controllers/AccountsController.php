@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\AccountResource as AccountResource;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AccountsController extends Controller
 {
@@ -16,7 +17,14 @@ class AccountsController extends Controller
      */
     public function index()
     {
-        return  AccountResource::collection(User::all());
+        $users = DB::table('users')
+            ->join('role_user','users.id','=','role_user.user_id')
+            ->join('roles','role_user.role_id','=','roles.id')
+            ->select('users.*','roles.name')
+            ->get();
+
+        return view('admin.userManage',['users'=>$users]);
+
     }
 
     /**
@@ -88,6 +96,25 @@ class AccountsController extends Controller
         $user = User::findOrFail($id);
         $user->update(['status'=>0]);
 
-        return new AccountResource($user);
+        return redirect('accounts');
+    }
+
+    public function active($id){
+        $user = User::findOrFail($id);
+        $user->update(['status'=>1]);
+        return redirect('accounts');
+    }
+
+    public function search(Request $request){
+        $text=$request->input('text');
+        $users = DB::table('users')
+            ->join('role_user','users.id','=','role_user.user_id')
+            ->join('roles','role_user.role_id','=','roles.id')
+            ->where('full_name','like','%'.$text.'%')
+            ->orWhere('email','like','%'.$text.'%')
+            ->select('users.*','roles.name')
+            ->get();
+
+        return view('admin.userManage',['users'=>$users]);
     }
 }
