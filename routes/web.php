@@ -45,6 +45,10 @@ Route::get('/getCurrentUser', function() {
     return Auth::user()->load('roles');
 });
 
+
+Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
+
+
 Route::get('/index', 'HomeController@index')->name('index');
 Route::get('/tour',function (){
     return view('tour');
@@ -66,4 +70,5 @@ Route::get('/service',function (){
 })->name('service');
 Route::get('mail/send', 'MailController@send');
 Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('logout');
+
 
