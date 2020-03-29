@@ -16,14 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/searchUser','AccountsController@search')->name('search');
 Route::resource('accounts', 'AccountsController');
-
-
+Route::get('delete/{id}','AccountsController@destroy')->name('delete');
+Route::get('active/{id}','AccountsController@active')->name('active');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('tour', 'TourController');
 Route::post('ckeditor/image_upload',
@@ -35,10 +33,42 @@ Route::post('ckeditor/image_upload',
 //});
 
 
-Auth::routes();
+Route::get('/home',function (){
+    if(Auth::check()){
+        return redirect('index');
+    }else{
+        return view('index');
+    }
+});
+Route::get('/admin', 'AccountsController@index')->name('admin');
+Route::get('/getCurrentUser', function() {
+    return Auth::user()->load('roles');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
+
+
+Route::get('/index', 'HomeController@index')->name('index');
+Route::get('/tour',function (){
+    return view('tour');
+})->name('tour');
+Route::get('/hotel',function (){
+    return view('hotel');
+})->name('hotel');
+Route::get('/blog',function (){
+    return view('blog');
+})->name('blog');
+Route::get('/contact',function (){
+    return view('contact');
+})->name('contact');
+Route::get('/about',function (){
+    return view('about');
+})->name('about');
+Route::get('/service',function (){
+    return view('service');
+})->name('service');
+Route::get('mail/send', 'MailController@send');
+Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('logout');
 
 
