@@ -14,9 +14,20 @@ class TourController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search_title = $request->search_title;
+
+        if(isset($search_title)) {
+            $lsTour =
+                Tour::where('title', 'like', "%$search_title%")
+                    ->paginate(2);
+        } else {
+            $lsTour = Tour::paginate(2);
+        }
+
+        return view("admin.tour.list_tour")
+            ->with(['lsTour'=> $lsTour, 'search_title' => $search_title]);
     }
 
     /**
@@ -28,7 +39,7 @@ class TourController extends Controller
     {
         $lsDes = Destination::all();
         $lsCat = Category::all();
-        return view('admin/add_tour') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
+        return view('admin/tour/add_tour') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
     }
 
     /**
@@ -39,16 +50,16 @@ class TourController extends Controller
      */
     public function store(Request $request)
     {
-//        $msg = [
-//            'required' => 'trường :attribute bắt buộc nhập',
-//            'max'      => 'trường :attribute có độ dài nhỏ hơn :max',
-//        ];
-//        $this->validate(
-//            $request,
-//            [
-//
-//            ],$msg
-//        );
+        $msg = [
+            'required' => 'trường :attribute bắt buộc nhập',
+            'max'      => 'trường :attribute có độ dài nhỏ hơn :max',
+        ];
+        $this->validate(
+            $request,
+            [
+
+            ],$msg
+        );
         $tour = new Tour();
         $tour->destination_id = $request->destination;
         $tour->tour_name = $request->tour_name;
@@ -63,9 +74,16 @@ class TourController extends Controller
         $tour->vehicle = $request->vehicle;
         $tour->schedule = $request->schedule;
         $tour->time_start = $request->time_start;
-        $tour->save();
-//        $request->session()->flash('success', 'Post was successful!');
-//        return redirect()->route("/");
+        if($request->hasFile('cover')) {
+            $name = time() . "." . $request->cover->extension();
+            $request->cover->move(public_path('images_upload'), $name);
+            $cover_path = "images_upload/" . $name;
+            $tour->cover = $cover_path;
+        }
+
+            $tour->save();
+        $request->session()->flash('success', 'Tour was successful!');
+        return redirect()->route("tour.index");
     }
 
     /**
