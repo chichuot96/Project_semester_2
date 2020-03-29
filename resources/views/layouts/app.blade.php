@@ -73,6 +73,21 @@
         </nav>
 
         <main class="py-4">
+            @foreach(['danger', 'warning', 'success', 'info'] as $msg)
+                @if(session($msg))
+                    <div class="alert alert-{{$msg}}">
+                        {{session($msg)}}
+                    </div>
+                @endif
+            @endforeach
+
+            @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    @foreach($errors->all() as $er)
+                        <p>{{$er}}</p>
+                    @endforeach
+                </div>
+            @endif
             @yield('content')
         </main>
     </div>
