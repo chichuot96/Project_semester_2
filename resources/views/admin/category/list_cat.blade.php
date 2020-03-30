@@ -6,7 +6,7 @@
         <!-- <a class="btn btn-primary" href="category/create">Add</a> -->
 
         <button type="button" class="btn btn-primary"
-                data-toggle="modal" data-target="exampleModal"
+                data-toggle="modal" data-target="#exampleModal"
                 data-whatever="@mdo">Add</button>
 
         <p></p>

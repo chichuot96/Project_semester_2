@@ -39,7 +39,14 @@ class DestinationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $name = $request->input('name');
+
+        $destination = new Destination();
+        $destination->name = $name;
+        $destination->save();
+
+        $request->session()->flash('success', 'Category was successful!');
+        return redirect()->route("category.index");
     }
 
     /**
