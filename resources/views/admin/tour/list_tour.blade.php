@@ -3,9 +3,9 @@
 
 
     <div class="container">
-        <a href="{{route('tour.create')}}">New Tour</a>
+        <a href="{{route('admin_tour.create')}}">New Tour</a>
 
-        <form method="GET" action="{{route('tour.index')}}">
+        <form method="GET" action="{{route('admin_tour.index')}}">
             @csrf
             <div class="form-group">
                 <label for="name">Search</label>
@@ -28,16 +28,16 @@
                 <tr>
                     <td>{{ $i + 1 }}</td>
                     <td><img style="width:100px;" src="{{$tour->cover}}" /></td>
-                    <td>{{$tour->destination->ame}}</td>
-                    <td><a href="{{route('tour.show', $tour->id)}}">View</a></td>
-                    <td><a href="{{route('tour.edit', $tour->id)}}">update</a></td>
+                    <td>{{$tour->destination->name}}</td>
+                    <td><a href="{{route('admin_tour.show', $tour->id)}}">View</a></td>
+                    <td><a href="{{route('admin_tour.edit', $tour->id)}}">update</a></td>
                     <td>
-                        <form action="{{route('$tour.destroy', $tour->id)}}"
+                        <form action="{{route('admin_tour.destroy', $tour->id)}}"
                               method="POST"
                               onsubmit="return confirm('Sure ?')">
                             @csrf
                             <input type="hidden" name="_method" value="DELETE" />
-                            <input type="submit" value="Delete" />
+                            <input type="submit" class="btn btn-sm btn-danger" value="Delete" />
                         </form>
                     </td>
                 </tr>

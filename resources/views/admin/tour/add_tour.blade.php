@@ -4,7 +4,7 @@
     <div class="container">
         <h2>Add new Tour</h2>
         <form class="form" method="post"
-              action="{{asset('tour')}}" enctype="multipart/form-data">
+              action="{{asset('admin_tour')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Cover</label>
@@ -13,9 +13,9 @@
                 <label for="status">Destination</label>
                 <select class="form-control" name="destination">
                     @foreach($lsDes as $Des)
-                    <option value="{{$Des->id}}">{{$Des->destination_name}}</option>
+                    <option value="{{$Des->id}}">{{$Des->name}}</option>
                         @endforeach
-                        <option value="69696969">UnKnown</option>
+                        <option value="0">UnKnown</option>
                 </select>
                 <br>
                 <label for="usr">Tour name</label>
@@ -29,7 +29,7 @@
                     @foreach($lsCat as $Cat)
                     <option value="{{$Cat->id}}">{{$Cat->name}}</option>
                         @endforeach
-                        <option value="69696969">UnKnown</option>
+                        <option value="0">UnKnown</option>
                 </select>
                 <br>
                 <label for="usr">Price</label>

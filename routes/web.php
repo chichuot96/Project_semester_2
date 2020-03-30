@@ -23,18 +23,11 @@ Route::get('active/{id}','AccountsController@active')->name('active');
 
 Auth::routes();
 
-Route::resource('tour', 'TourController');
+Route::resource('admin_tour', 'TourController');
 Route::resource('destination', 'DestinationController');
 Route::resource('category', 'CategoryController');
 Route::post('ckeditor/image_upload',
     'CKEditorController@upload')->name('upload');
-//Route::group(['middleware' => 'auth'], function() {
-//    Route::resource('tour', 'TourController');
-//    Route::post('ckeditor/image_upload',
-//        'CKEditorController@upload')->name('upload');
-//});
-
-
 Route::get('/home',function (){
     if(Auth::check()){
         return redirect('index');
@@ -49,7 +42,6 @@ Route::get('/getCurrentUser', function() {
 
 
 Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
-
 
 Route::get('/index', 'HomeController@index')->name('index');
 Route::get('/tour',function (){
