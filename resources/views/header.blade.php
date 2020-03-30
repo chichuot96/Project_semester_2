@@ -72,7 +72,7 @@
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
-                            <li class="active"><a href="{{route('index')}}">Home</a></li>
+                            <li ><a href="{{route('index')}}">Home</a></li>
                             <li >
                                 <a href="{{route('tour')}}">Tours</a>
                             </li>
@@ -81,8 +81,12 @@
                             <li><a href="{{route('blog')}}">Blog</a></li>
                             <li><a href="{{route('about')}}">About</a></li>
                             <li><a href="{{route('contact')}}">Contact</a></li>
+
                             @if (Auth::check())
-                                <li class="has-dropdown"><a>Hello, <%user.email%> </a>
+                                @if(Auth::user()->load('roles')->roles->get(0)->name=="admin")
+                                    <li> <a href="{{route('admin')}}">Admin Page</a></li>
+                                @endif
+                                <li class="has-dropdown"><a>Hello, {{Auth::user()->full_name}} </a>
                                     <ul class="dropdown">
                                         <li><a href="{{route('logout')}}">Logout</a></li>
                                         <li><a >Information</a></li>
@@ -90,7 +94,7 @@
                                 </li>
                             @else
                                 <li class="has-dropdown">
-                                <a >Login</a>
+                                    <a >Login</a>
 
                                     <ul class="dropdown">
                                         <li><a href="{{route('login')}}">Login</a></li>
