@@ -42,12 +42,7 @@ class TourController extends Controller
         return view('admin/tour/add_tour') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         $msg = [
@@ -83,7 +78,7 @@ class TourController extends Controller
 
             $tour->save();
         $request->session()->flash('success', 'Tour was successful!');
-        return redirect()->route("tour.index");
+        return redirect()->route("admin_tour.index");
     }
 
     /**
@@ -126,8 +121,12 @@ class TourController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+        $request->session()->flash('success', 'Post was deleted!');
+        return redirect()->route("post.index");
     }
+
 }

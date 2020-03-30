@@ -18,14 +18,14 @@
                 <th>Delete</th>
             </tr>
 
-            @foreach($lsDestinations as $cate)
+            @foreach($lsDestinations as $des)
                 <tr>
-                    <td>{{$cate->id}}</td>
-                    <td>{{$cate->name}}</td>
-                    <td><a href="destination/{{$cate->id}}/edit" class="btn btn-primary">Update</a></td>
+                    <td>{{$des->id}}</td>
+                    <td>{{$des->name}}</td>
+                    <td><a href="destination/{{$des->id}}/edit" class="btn btn-primary">Update</a></td>
                     <td>
                         <form method="POST"
-                              action="destination/{{$cate->id}}"
+                              action="destination/{{$des->id}}"
                               onsubmit="return confirm('Sure ?')">
                             @csrf
                             @method('DELETE')
