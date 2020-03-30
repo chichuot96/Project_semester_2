@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Tour;
 use App\Destination;
 use App\Category;
+use Illuminate\Support\Facades\DB;
 
 class TourController extends Controller
 {
@@ -16,7 +18,8 @@ class TourController extends Controller
      */
     public function index()
     {
-        //
+        $list=Tour::all();
+        return view('index')->with(['list'=>$list]);
     }
 
     /**
@@ -102,14 +105,27 @@ class TourController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy($id,Request $request)
     {
-        //
+        $tour = Tour::findOrFail($id);
+        $tour->update(['status'=>0]);
+
+        return $this->search($request);
+    }
+    public function active($id,Request $request){
+        $tour = Tour::findOrFail($id);
+        $tour->update(['status'=>1]);
+        return $this->search($request);
+    }
+
+    public function search(Request $request){
+        $text=$request->input('text');
+        $tour = DB::table('tours')
+            ->where('tour_name','like','%'.$text.'%')
+            ->orWhere('description','like','%'.$text.'%')
+            ->paginate(10);
+
+        return view('admin.userManage',['tours'=>$tour,'request'=>$request]);
     }
 }
