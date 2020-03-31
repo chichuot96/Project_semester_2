@@ -37,12 +37,6 @@ class DemoMail extends Mailable
     {
         return $this->from('amazingviettourguide@gmail.com')
             ->view('mails.demo')
-            ->text('mails.demo_plain')
-            ->with(
-                [
-                    'testVarOne' => '1',
-                    'testVarTwo' => '2',
-                ])
-            ;
+            ->text('mails.demo_plain');
     }
 }
