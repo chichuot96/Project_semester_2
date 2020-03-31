@@ -49,18 +49,20 @@
 
     <!-- Theme style  -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
     <!-- Modernizr JS -->
     <script src="{{asset('js/modernizr-2.6.2.min.js')}}"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
     <script src="{{asset('js/respond.min.js')}}"></script>
     <![endif]-->
-
+    @stack('head')
 </head>
 <body>
 
-<div class="colorlib-loader"></div>
 
 <div id="page" ng-controller="indexPageCtrl">
     <nav class="colorlib-nav" role="navigation" >
@@ -111,7 +113,7 @@
     <aside id="colorlib-hero">
         <div class="flexslider">
             <ul class="slides">
-                <li style="background-image: url(images/img_bg_1.jpg);">
+                <li style="background-image: url({{asset('images/img_bg_1.jpg')}});">
                     <div class="overlay"></div>
                     <div class="container-fluid">
                         <div class="row">
@@ -124,7 +126,7 @@
                         </div>
                     </div>
                 </li>
-                <li style="background-image: url(images/img_bg_2.jpg);">
+                <li style="background-image: url({{asset('images/img_bg_2.jpg')}});">
                     <div class="overlay"></div>
                     <div class="container-fluid">
                         <div class="row">
@@ -137,7 +139,7 @@
                         </div>
                     </div>
                 </li>
-                <li style="background-image: url(images/img_bg_5.jpg);">
+                <li style="background-image: url({{asset('images/img_bg_5.jpg')}});">
                     <div class="overlay"></div>
                     <div class="container-fluids">
                         <div class="row">
@@ -150,7 +152,7 @@
                         </div>
                     </div>
                 </li>
-                <li style="background-image: url(images/img_bg_4.jpg);">
+                <li style="background-image: url({{asset('images/img_bg_4.jpg')}});">
                     <div class="overlay"></div>
                     <div class="container-fluid">
                         <div class="row">
