@@ -4,14 +4,18 @@
     <div class="container">
         <h2>Add new Tour</h2>
         <form class="form" method="post"
-              action="{{asset('tour')}}" enctype="multipart/form-data">
+              action="{{asset('admin_tour')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+                <label for="name">Cover</label>
+                <input type="file" class="form-control" name="cover">
+                <br>
                 <label for="status">Destination</label>
                 <select class="form-control" name="destination">
                     @foreach($lsDes as $Des)
-                    <option value="{{$Des->id}}">{{$Des->destination_name}}</option>
+                    <option value="{{$Des->id}}">{{$Des->name}}</option>
                         @endforeach
+                        <option value="0">UnKnown</option>
                 </select>
                 <br>
                 <label for="usr">Tour name</label>
@@ -25,6 +29,7 @@
                     @foreach($lsCat as $Cat)
                     <option value="{{$Cat->id}}">{{$Cat->name}}</option>
                         @endforeach
+                        <option value="0">UnKnown</option>
                 </select>
                 <br>
                 <label for="usr">Price</label>
@@ -40,7 +45,6 @@
                 <select class="form-control" name="status">
                     <option value="1">Public</option>
                     <option value="0">Draft</option>
-                    <option value="">blah blah</option>
                 </select>
                 <br>
                 <label for="usr">Discount</label>
@@ -57,7 +61,7 @@
                 <input type="text" class="form-control" name="schedule"  required="true">
                 <br>
                 <label for="usr">Time start</label>
-                <input type="date" class="form-control" name="time_start"  required="true">
+                <input type="datetime-local" class="form-control" name="time_start"  required="true">
             </div>
             <input type="submit" value="Add" />
         </form>

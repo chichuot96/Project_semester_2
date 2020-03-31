@@ -16,10 +16,22 @@ class TourController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $list=Tour::all();
-        return view('index')->with(['list'=>$list]);
+
+        $search_title = $request->search_title;
+
+        if(isset($search_title)) {
+            $lsTour =
+                Tour::where('title', 'like', "%$search_title%")
+                    ->paginate(2);
+        } else {
+            $lsTour = Tour::paginate(2);
+        }
+
+        return view("admin.tour.list_tour")
+            ->with(['lsTour'=> $lsTour, 'search_title' => $search_title]);
+
     }
 
     /**
@@ -31,27 +43,22 @@ class TourController extends Controller
     {
         $lsDes = Destination::all();
         $lsCat = Category::all();
-        return view('admin/add_tour') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
+        return view('admin/tour/add_tour') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-//        $msg = [
-//            'required' => 'trường :attribute bắt buộc nhập',
-//            'max'      => 'trường :attribute có độ dài nhỏ hơn :max',
-//        ];
-//        $this->validate(
-//            $request,
-//            [
-//
-//            ],$msg
-//        );
+        $msg = [
+            'required' => 'trường :attribute bắt buộc nhập',
+            'max'      => 'trường :attribute có độ dài nhỏ hơn :max',
+        ];
+        $this->validate(
+            $request,
+            [
+
+            ],$msg
+        );
         $tour = new Tour();
         $tour->destination_id = $request->destination;
         $tour->tour_name = $request->tour_name;
@@ -66,9 +73,16 @@ class TourController extends Controller
         $tour->vehicle = $request->vehicle;
         $tour->schedule = $request->schedule;
         $tour->time_start = $request->time_start;
-        $tour->save();
-//        $request->session()->flash('success', 'Post was successful!');
-//        return redirect()->route("/");
+        if($request->hasFile('cover')) {
+            $name = time() . "." . $request->cover->extension();
+            $request->cover->move(public_path('images_upload'), $name);
+            $cover_path = "images_upload/" . $name;
+            $tour->cover = $cover_path;
+        }
+
+            $tour->save();
+        $request->session()->flash('success', 'Tour was successful!');
+        return redirect()->route("admin_tour.index");
     }
 
     /**
@@ -106,26 +120,19 @@ class TourController extends Controller
     }
 
 
-    public function destroy($id,Request $request)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id, Request $request)
     {
-        $tour = Tour::findOrFail($id);
-        $tour->update(['status'=>0]);
+        $post = Post::find($id);
+        $post->delete();
+        $request->session()->flash('success', 'Post was deleted!');
+        return redirect()->route("post.index");
 
-        return $this->search($request);
-    }
-    public function active($id,Request $request){
-        $tour = Tour::findOrFail($id);
-        $tour->update(['status'=>1]);
-        return $this->search($request);
     }
 
-    public function search(Request $request){
-        $text=$request->input('text');
-        $tour = DB::table('tours')
-            ->where('tour_name','like','%'.$text.'%')
-            ->orWhere('description','like','%'.$text.'%')
-            ->paginate(10);
-
-        return view('admin.userManage',['tours'=>$tour,'request'=>$request]);
-    }
 }
