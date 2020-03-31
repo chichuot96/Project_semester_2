@@ -6,120 +6,28 @@
                 <div class="col-md-9">
                     <div class="row">
                         <div class="wrap-division">
+                            @foreach($lsTour as $tour)
                             <div class="col-md-6 col-sm-6 animate-box">
                                 <div class="tour">
-                                    <a href="tour-place.html" class="tour-img" style="background-image: url(images/tour-1.jpg);">
-                                        <p class="price"><span>$1500</span> <small>/ 3 Days</small></p>
+                                    <a href="{{route('tour.show', $tour->id)}}" class="tour-img" style="background-image: url({{$tour->cover}});">
+                                        <p class="price"><span>{{$tour->price}}VNĐ</span> <small>/ {{$tour->num_of_day}} Days</small></p>
                                     </a>
                                     <span class="desc">
 											<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-											<h2><a href="tour-place.html">Family Tour in Greece</a></h2>
-											<span class="city">Athens, Greece</span>
+											<h2><a href="tour-place.html">{{$tour->tour_name}}</a></h2>
+											<span class="city">{{$tour->destination->name}}</span>
 										</span>
                                 </div>
                             </div>
+                            @endforeach
 
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="tour">
-                                    <a href="tour-place.html" class="tour-img" style="background-image: url(images/tour-2.jpg);">
-                                        <p class="price"><span>$1500</span> <small>/ 3 Days</small></p>
-                                    </a>
-                                    <span class="desc">
-											<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-											<h2><a href="tour-place.html">Family Tour in Greece</a></h2>
-											<span class="city">Athens, Greece</span>
-										</span>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="tour">
-                                    <a href="tour-place.html" class="tour-img" style="background-image: url(images/tour-3.jpg);">
-                                        <p class="price"><span>$1500</span> <small>/ 3 Days</small></p>
-                                    </a>
-                                    <span class="desc">
-											<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-											<h2><a href="tour-place.html">Family Tour in Greece</a></h2>
-											<span class="city">Athens, Greece</span>
-										</span>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="tour">
-                                    <a href="tour-place.html" class="tour-img" style="background-image: url(images/tour-4.jpg);">
-                                        <p class="price"><span>$1500</span> <small>/ 3 Days</small></p>
-                                    </a>
-                                    <span class="desc">
-											<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-											<h2><a href="tour-place.html">Family Tour in Greece</a></h2>
-											<span class="city">Athens, Greece</span>
-										</span>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="tour">
-                                    <a href="tour-place.html" class="tour-img" style="background-image: url(images/tour-5.jpg);">
-                                        <p class="price"><span>$1500</span> <small>/ 3 Days</small></p>
-                                    </a>
-                                    <span class="desc">
-											<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-											<h2><a href="tour-place.html">Family Tour in Greece</a></h2>
-											<span class="city">Athens, Greece</span>
-										</span>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="tour">
-                                    <a href="tour-place.html" class="tour-img" style="background-image: url(images/tour-6.jpg);">
-                                        <p class="price"><span>$1500</span> <small>/ 3 Days</small></p>
-                                    </a>
-                                    <span class="desc">
-											<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-											<h2><a href="tour-place.html">Family Tour in Greece</a></h2>
-											<span class="city">Athens, Greece</span>
-										</span>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="tour">
-                                    <a href="tour-place.html" class="tour-img" style="background-image: url(images/tour-7.jpg);">
-                                        <p class="price"><span>$1500</span> <small>/ 3 Days</small></p>
-                                    </a>
-                                    <span class="desc">
-											<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-											<h2><a href="tour-place.html">Family Tour in Greece</a></h2>
-											<span class="city">Athens, Greece</span>
-										</span>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 col-sm-6 animate-box">
-                                <div class="tour">
-                                    <a href="tour-place.html" class="tour-img" style="background-image: url(images/tour-8.jpg);">
-                                        <p class="price"><span>$1500</span> <small>/ 3 Days</small></p>
-                                    </a>
-                                    <span class="desc">
-											<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-											<h2><a href="tour-place.html">Family Tour in Greece</a></h2>
-											<span class="city">Athens, Greece</span>
-										</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-center">
+
                             <ul class="pagination">
-                                <li class="disabled"><a href="#">&laquo;</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">&raquo;</a></li>
+                                {{ $lsTour->links() }}
                             </ul>
                         </div>
                     </div>
