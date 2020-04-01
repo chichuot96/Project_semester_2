@@ -1,4 +1,5 @@
 @extends('header')
+
 @section('container')
     <div class="colorlib-wrap">
         <div class="container">
@@ -14,7 +15,7 @@
                                     </a>
                                     <span class="desc">
 											<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-											<h2><a href="tour-place.html">{{$tour->tour_name}}</a></h2>
+											<h2><a href="tour-place.html">{{substr($tour->tour_name, 0, 40)}}...</a></h2>
 											<span class="city">{{$tour->destination->name}}</span>
 										</span>
                                 </div>
