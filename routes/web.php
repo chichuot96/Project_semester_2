@@ -42,9 +42,7 @@ Route::get('/getCurrentUser', function() {
 Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
 
 Route::get('/index', 'HomeController@index')->name('index');
-Route::get('/tour',function (){
-    return view('tour');
-})->name('tour');
+Route::resource('/tour', 'FrontTourController');
 Route::get('/hotel',function (){
     return view('hotel');
 })->name('hotel');

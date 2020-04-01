@@ -24,9 +24,9 @@ class TourController extends Controller
         if(isset($search_title)) {
             $lsTour =
                 Tour::where('title', 'like', "%$search_title%")
-                    ->paginate(2);
+                    ->paginate(10);
         } else {
-            $lsTour = Tour::paginate(2);
+            $lsTour = Tour::paginate(10);
         }
 
         return view("admin.tour.list_tour")

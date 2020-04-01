@@ -76,7 +76,7 @@
                         <ul>
                             <li ><a href="{{route('index')}}">Home</a></li>
                             <li >
-                                <a href="{{route('tour')}}">Tours</a>
+                                <a href="{{route('tour.index')}}">Tours</a>
                             </li>
                             <li><a href="{{route('hotel')}}">Hotels</a></li>
                             <li><a href="{{route('service')}}">Services</a></li>
