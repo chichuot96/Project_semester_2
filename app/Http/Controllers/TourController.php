@@ -93,7 +93,8 @@ class TourController extends Controller
      */
     public function show($id)
     {
-        //
+        $tour=Tour::find($id);
+        return view('detail_tour')->with(['tour'=>$tour]);
     }
 
     /**
@@ -134,5 +135,8 @@ class TourController extends Controller
         return redirect()->route("post.index");
 
     }
+
+
+
 
 }

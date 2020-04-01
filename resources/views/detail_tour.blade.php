@@ -19,6 +19,8 @@
                     </div>
                 </div>
             </div>
+
+            <a class="btn btn-info" href="{{route('booktour',['id'=>$tour->id])}}"> Book tour</a>
         </div>
     </div>
 

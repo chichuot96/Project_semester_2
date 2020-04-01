@@ -191,7 +191,7 @@
             </div>
         </div>
     </div>
-</div>
+
 
 
 
@@ -199,92 +199,24 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box" style="margin-top: -45px;">
-                <h2>Popular Destination</h2>
+                <h2>Tour trong nước</h2>
                 <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
             </div>
         </div>
     </div>
     <div class="tour-wrap">
-        <a href="#" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url(images/tour-1.jpg);">
+        @foreach($tour1 as $t)
+        <a href="{{route('admin_tour.show',$t->id)}}" class="tour-entry animate-box">
+            <div class="tour-img" style="background-image: url({{asset($t->cover)}});">
             </div>
             <span class="desc">
 						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Tam đảo's Hotel</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
+						<<a href="{{route('admin_tour.show',$t->id)}}"> {{$t->tour_name}}</a>
+						<span class="city">{{$t->start_at}}</span>
+						<span class="price">{{$t->price}}</span>
 					</span>
         </a>
-        <a href="#" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url(images/tour-2.jpg);">
-            </div>
-            <span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Tam Đảo</h2>
-						<span class="city">Same price</span>
-						<span class="price">$450</span>
-					</span>
-        </a>
-        <a href="#" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url(images/tour-3.jpg);">
-            </div>
-            <span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Philippines</h2>
-						<span class="city">Lipa, Philippines</span>
-						<span class="price">$450</span>
-					</span>
-        </a>
-        <a href="#" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url(images/tour-4.jpg);">
-            </div>
-            <span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Greece</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
-					</span>
-        </a>
-        <a href="#" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url(images/tour-5.jpg);">
-            </div>
-            <span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Greece</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
-					</span>
-        </a>
-        <a href="#" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url(images/tour-6.jpg);">
-            </div>
-            <span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Greece</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
-					</span>
-        </a>
-        <a href="#" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url(images/tour-7.jpg);">
-            </div>
-            <span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Greece</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
-					</span>
-        </a>
-        <a href="#" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url(images/tour-8.jpg);">
-            </div>
-            <span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>Family Tour in Greece</h2>
-						<span class="city">Athens, Greece</span>
-						<span class="price">$450</span>
-					</span>
-        </a>
+            @endforeach
     </div>
 </div>
 
@@ -293,72 +225,35 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-                <h2>Recommended Hotels</h2>
+                <h2>Tour du lịch quốc tế</h2>
                 <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-12 animate-box">
                 <div class="owl-carousel">
+                    @foreach($tour2 as $t2)
                     <div class="item">
                         <div class="hotel-entry">
-                            <a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-1.jpg);">
-                                <p class="price"><span>$120</span><small> /night</small></p>
+                            <a href="{{route('admin_tour.show',$t2->id)}}" class="hotel-img" style="background-image: url({{asset($t2->cover)}});">
+                                <p class="price"><span>{{$t2->price}}</span> VND</p>
                             </a>
                             <div class="desc">
                                 <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                <h3><a href="#">Hotel Edison</a></h3>
-                                <span class="place">New York, USA</span>
+                                <h3><a href="{{route('admin_tour.show',$t2->id)}}">{{$t2->tour_name}}</a></h3>
+                                <span class="place">{{$t2->start_at}}</span>
                                 <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="hotel-entry">
-                            <a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-2.jpg);">
-                                <p class="price"><span>$120</span><small> /night</small></p>
-                            </a>
-                            <div class="desc">
-                                <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                <h3><a href="#">Hotel Edison</a></h3>
-                                <span class="place">New York, USA</span>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="hotel-entry">
-                            <a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-3.jpg);">
-                                <p class="price"><span>$120</span><small> /night</small></p>
-                            </a>
-                            <div class="desc">
-                                <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                <h3><a href="#">Hotel Edison</a></h3>
-                                <span class="place">New York, USA</span>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="hotel-entry">
-                            <a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-4.jpg);">
-                                <p class="price"><span>$120</span><small> /night</small></p>
-                            </a>
-                            <div class="desc">
-                                <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                <h3><a href="#">Hotel Edison</a></h3>
-                                <span class="place">New York, USA</span>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div id="colorlib-subscribe" style="background-image: url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
+<div id="colorlib-subscribe" style="background-image: url({{asset('images/img_bg_2.jpg')}});" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">
