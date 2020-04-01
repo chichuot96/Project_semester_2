@@ -1,15 +1,13 @@
 Hello {{ $demo->receiver }},
-This is a demo email for testing purposes! Also, it's the HTML version.
+You booked a tour from AmazingTour
 
-Demo object values:
+Thông tin tour:
 
-Demo One: {{ $demo->demo_one }}
-Demo Two: {{ $demo->demo_two }}
-
-Values passed by With method:
-
-testVarOne: {{ $testVarOne }}
-testVarOne: {{ $testVarOne }}
+Tên tour:{{ $demo->tour_name }}
+Thời gian:&nbsp;{{ $demo->time_start }}
+Địa điểm:{{ $demo->destination }}
+Xuất phát:&nbsp;{{ $demo->start_at }}
+Người book:&nbsp;{{ $demo->full_name }}
 
 Thank You,
 {{ $demo->sender }}

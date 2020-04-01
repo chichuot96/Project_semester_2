@@ -1,18 +1,14 @@
 Hello <i>{{ $demo->receiver }}</i>,
-<p>This is a demo email for testing purposes! Also, it's the HTML version.</p>
+<p>You booked a tour from AmazingTour</p>
 
-<p><u>Demo object values:</u></p>
-
-<div>
-    <p><b>Demo One:</b>&nbsp;{{ $demo->demo_one }}</p>
-    <p><b>Demo Two:</b>&nbsp;{{ $demo->demo_two }}</p>
-</div>
-
-<p><u>Values passed by With method:</u></p>
+<p><u>Thông tin tour</u></p>
 
 <div>
-    <p><b>testVarOne:</b>&nbsp;{{ $testVarOne }}</p>
-    <p><b>testVarTwo:</b>&nbsp;{{ $testVarTwo }}</p>
+    <p><b>Tên tour:</b>&nbsp;{{ $demo->tour_name }}</p>
+    <p><b>Thời gian khởi hành:</b>&nbsp;{{ $demo->time_start }}</p>
+    <p><b>Địa điểm:</b>&nbsp;{{ $demo->destination }}</p>
+    <p><b>Xuất phát tại:</b>&nbsp;{{ $demo->start_at }}</p>
+    <p><b>Người book:</b>&nbsp;{{ $demo->full_name }}</p>
 </div>
 
 Thank You,

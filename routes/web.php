@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('index');
 });
 Route::get('/searchUser','AccountsController@search')->name('search');
 Route::resource('accounts', 'AccountsController');
@@ -29,12 +30,9 @@ Route::resource('category', 'CategoryController');
 Route::post('ckeditor/image_upload',
     'CKEditorController@upload')->name('upload');
 Route::get('/home',function (){
-    if(Auth::check()){
         return redirect('index');
-    }else{
-        return view('index');
     }
-});
+);
 Route::get('/admin', 'AccountsController@index')->name('admin');
 Route::get('/getCurrentUser', function() {
     return Auth::user()->load('roles');
@@ -63,4 +61,5 @@ Route::get('/service',function (){
 Route::get('mail/send', 'MailController@send');
 Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('logout');
 
-
+Route::get('/booktour/{id}','BookTourController@showData')->name('booktour');
+Route::post('/booktour/accept','BooktourController@booked');
