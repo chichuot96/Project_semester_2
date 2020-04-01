@@ -61,5 +61,5 @@ Route::get('/service',function (){
 Route::get('mail/send', 'MailController@send');
 Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/booktour/{id}','BookTourController@showData');
+Route::get('/booktour/{id}','BookTourController@showData')->name('booktour');
 Route::post('/booktour/accept','BooktourController@booked');

@@ -35,6 +35,7 @@
                 <input type="text" class="form-control" name="discount" placeholder="Mã giảm giá" >
             </div>
             <button type="submit" class="btn btn-primary">Xác nhận</button>
+            <a class="btn btn-danger" href="{{route('admin_tour.show',$tour->id)}}"> Quay lại</a>
         </form>
     </div>
 
