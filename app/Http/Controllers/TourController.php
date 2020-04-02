@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Tour;
 use App\Destination;
 use App\Category;
+use Illuminate\Support\Facades\DB;
 
 class TourController extends Controller
 {
@@ -16,18 +18,20 @@ class TourController extends Controller
      */
     public function index(Request $request)
     {
+
         $search_title = $request->search_title;
 
         if(isset($search_title)) {
             $lsTour =
                 Tour::where('title', 'like', "%$search_title%")
-                    ->paginate(2);
+                    ->paginate(10);
         } else {
-            $lsTour = Tour::paginate(2);
+            $lsTour = Tour::paginate(10);
         }
 
         return view("admin.tour.list_tour")
             ->with(['lsTour'=> $lsTour, 'search_title' => $search_title]);
+
     }
 
     /**
@@ -89,7 +93,8 @@ class TourController extends Controller
      */
     public function show($id)
     {
-        //
+        $tour=Tour::find($id);
+        return view('detail_tour')->with(['tour'=>$tour]);
     }
 
     /**
@@ -115,6 +120,7 @@ class TourController extends Controller
         //
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -127,6 +133,10 @@ class TourController extends Controller
         $post->delete();
         $request->session()->flash('success', 'Post was deleted!');
         return redirect()->route("post.index");
+
     }
+
+
+
 
 }

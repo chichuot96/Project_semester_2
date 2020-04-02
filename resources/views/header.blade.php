@@ -49,18 +49,20 @@
 
     <!-- Theme style  -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
     <!-- Modernizr JS -->
     <script src="{{asset('js/modernizr-2.6.2.min.js')}}"></script>
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
     <script src="{{asset('js/respond.min.js')}}"></script>
     <![endif]-->
-
+    @stack('head')
 </head>
 <body>
 
-<div class="colorlib-loader"></div>
 
 <div id="page" ng-controller="indexPageCtrl">
     <nav class="colorlib-nav" role="navigation" >
@@ -72,17 +74,21 @@
                     </div>
                     <div class="col-xs-10 text-right menu-1">
                         <ul>
-                            <li class="active"><a href="{{route('index')}}">Home</a></li>
+                            <li ><a href="{{route('index')}}">Home</a></li>
                             <li >
-                                <a href="{{route('tour')}}">Tours</a>
+                                <a href="{{route('tour.index')}}">Tours</a>
                             </li>
                             <li><a href="{{route('hotel')}}">Hotels</a></li>
                             <li><a href="{{route('service')}}">Services</a></li>
                             <li><a href="{{route('blog')}}">Blog</a></li>
                             <li><a href="{{route('about')}}">About</a></li>
                             <li><a href="{{route('contact')}}">Contact</a></li>
+
                             @if (Auth::check())
-                                <li class="has-dropdown"><a>Hello, <%user.email%> </a>
+                                @if(Auth::user()->load('roles')->roles->get(0)->name=="admin")
+                                    <li> <a href="{{route('admin')}}">Admin Page</a></li>
+                                @endif
+                                <li class="has-dropdown"><a>Hello, {{Auth::user()->full_name}} </a>
                                     <ul class="dropdown">
                                         <li><a href="{{route('logout')}}">Logout</a></li>
                                         <li><a >Information</a></li>
@@ -90,7 +96,7 @@
                                 </li>
                             @else
                                 <li class="has-dropdown">
-                                <a >Login</a>
+                                    <a >Login</a>
 
                                     <ul class="dropdown">
                                         <li><a href="{{route('login')}}">Login</a></li>
@@ -107,7 +113,7 @@
     <aside id="colorlib-hero">
         <div class="flexslider">
             <ul class="slides">
-                <li style="background-image: url(images/img_bg_1.jpg);">
+                <li style="background-image: url({{asset('images/img_bg_1.jpg')}});">
                     <div class="overlay"></div>
                     <div class="container-fluid">
                         <div class="row">
@@ -120,7 +126,7 @@
                         </div>
                     </div>
                 </li>
-                <li style="background-image: url(images/img_bg_2.jpg);">
+                <li style="background-image: url({{asset('images/img_bg_2.jpg')}});">
                     <div class="overlay"></div>
                     <div class="container-fluid">
                         <div class="row">
@@ -133,7 +139,7 @@
                         </div>
                     </div>
                 </li>
-                <li style="background-image: url(images/img_bg_5.jpg);">
+                <li style="background-image: url({{asset('images/img_bg_5.jpg')}});">
                     <div class="overlay"></div>
                     <div class="container-fluids">
                         <div class="row">
@@ -146,7 +152,7 @@
                         </div>
                     </div>
                 </li>
-                <li style="background-image: url(images/img_bg_4.jpg);">
+                <li style="background-image: url({{asset('images/img_bg_4.jpg')}});">
                     <div class="overlay"></div>
                     <div class="container-fluid">
                         <div class="row">
