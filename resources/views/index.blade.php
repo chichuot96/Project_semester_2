@@ -209,12 +209,16 @@
         <a href="{{route('admin_tour.show',$t->id)}}" class="tour-entry animate-box">
             <div class="tour-img" style="background-image: url({{asset($t->cover)}});">
             </div>
-            <span class="desc">
-						<p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<<a href="{{route('admin_tour.show',$t->id)}}"> {{$t->tour_name}}</a>
-						<span class="city">{{$t->start_at}}</span>
-						<span class="price">{{$t->price}}</span>
-					</span>
+            <div class="desc">
+                <p class="star">
+                    <span>
+                        <i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i>
+                    </span> 545 Reviews</p>
+                <a href="{{route('admin_tour.show',$t->id)}}">{{$t->tour_name}}</a>
+                <span class="city">{{$t->start_at}}</span>
+                <span class="price">{{$t->price}}</span>
+            </div>
+
         </a>
             @endforeach
     </div>

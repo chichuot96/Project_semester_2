@@ -18,8 +18,7 @@ class AccountsController extends Controller
     public function index()
     {
         $users = DB::table('users')
-            ->join('role_user','users.id','=','role_user.user_id')
-            ->join('roles','role_user.role_id','=','roles.id')
+            ->join('roles','users.role','=','roles.id')
             ->select('users.*','roles.name')
             ->paginate(10);
         $request=null;
@@ -89,22 +88,21 @@ class AccountsController extends Controller
     public function destroy($id,Request $request)
     {
         $user = User::findOrFail($id);
-        $user->update(['status'=>0]);
+        $user->update(['role'=>1]);
 
         return $this->search($request);
     }
 
     public function active($id,Request $request){
         $user = User::findOrFail($id);
-        $user->update(['status'=>1]);
+        $user->update(['role'=>2]);
         return $this->search($request);
     }
 
     public function search(Request $request){
         $text=$request->input('text');
         $users = DB::table('users')
-            ->join('role_user','users.id','=','role_user.user_id')
-            ->join('roles','role_user.role_id','=','roles.id')
+            ->join('roles','users.role','=','roles.id')
             ->where('full_name','like','%'.$text.'%')
             ->orWhere('email','like','%'.$text.'%')
             ->select('users.*','roles.name')
