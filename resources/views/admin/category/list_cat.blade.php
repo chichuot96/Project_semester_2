@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('header')
 
-@section('content')
+@section('container')
     <div class="container">
         <p>Category management</p>
         <!-- <a class="btn btn-primary" href="category/create">Add</a> -->

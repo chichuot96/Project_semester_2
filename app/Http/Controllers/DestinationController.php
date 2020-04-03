@@ -93,4 +93,7 @@ class DestinationController extends Controller
     {
         //
     }
+    public function search($text){
+
+    }
 }
