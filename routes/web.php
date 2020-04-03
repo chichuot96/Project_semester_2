@@ -34,10 +34,6 @@ Route::get('/home',function (){
     }
 );
 Route::get('/admin', 'AccountsController@index')->name('admin');
-Route::get('/getCurrentUser', function() {
-    return Auth::user()->load('roles');
-});
-
 
 Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
 
