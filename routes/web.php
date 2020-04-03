@@ -26,6 +26,8 @@ Auth::routes();
 
 Route::resource('admin_tour', 'TourController');
 Route::resource('destination', 'DestinationController');
+Route::post('searchDes','DestinationController@search')->name('searchDes');
+Route::post('searchTour','TourController@search')->name('searchTour');
 Route::resource('category', 'CategoryController');
 Route::post('ckeditor/image_upload',
     'CKEditorController@upload')->name('upload');
