@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Destination;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DestinationController extends Controller
 {
@@ -93,7 +94,12 @@ class DestinationController extends Controller
     {
         //
     }
-    public function search($text){
-
+    public function search(Request $request){
+        $name=$request->input('destination');
+        $lsDestinations=DB::table('destinations')->where('name','like','%'.$name.'%')
+            ->paginate(8);
+        return view('admin/destination/list_des')-> with([
+            'lsDestinations' => $lsDestinations
+        ]);
     }
 }
