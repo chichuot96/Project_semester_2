@@ -82,7 +82,7 @@
     <div class="tour-wrap">
         @foreach($tour1 as $t)
         <a href="{{route('admin_tour.show',$t->id)}}" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url({{asset($t->cover)}});">
+            <div class="tour-img" style="background-image: url(http://res.cloudinary.com/a123abc/image/upload/{{asset($t->cover)}});">
             </div>
             <div class="desc">
                 <p class="star">

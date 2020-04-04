@@ -9,7 +9,7 @@
                             @foreach($lsTour as $tour)
                             <div class="col-md-6 col-sm-6 animate-box">
                                 <div class="tour">
-                                    <a href="{{route('tour.show', $tour->id)}}" class="tour-img" style="background-image: url({{$tour->cover}});">
+                                    <a href="{{route('tour.show', $tour->id)}}" class="tour-img" style="background-image: url(http://res.cloudinary.com/a123abc/image/upload/{{$tour->cover}});">
                                         <p class="price"><span>{{$tour->price}}VNĐ</span> <small>/ {{$tour->num_of_day}} Days</small></p>
                                     </a>
                                     <span class="desc">
@@ -102,7 +102,7 @@
     </div>
 
 
-    <div id="colorlib-subscribe" style="background-image: url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div id="colorlib-subscribe" style="background-image: url({{asset('images/img_bg_2.jpg')}});" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">

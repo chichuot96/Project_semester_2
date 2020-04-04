@@ -1,5 +1,7 @@
 <?php
 
+use App\Category;
+use App\Destination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -61,3 +63,9 @@ Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('l
 
 Route::get('/booktour/{id}','BookTourController@showData')->name('booktour');
 Route::post('/booktour/accept','BooktourController@booked');
+Route::get('/addT',function(){
+    $lsDes = Destination::all();
+    $lsCat = Category::all();
+    return view('admin/tour/add') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
+});
+Route::post('/addT','Tourcontroller@save')->name('addT');
