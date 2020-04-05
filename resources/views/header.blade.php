@@ -85,8 +85,14 @@
                             <li><a href="{{route('contact')}}">Contact</a></li>
 
                             @if (Auth::check())
-                                @if(Auth::user()->load('roles')->roles->get(0)->name=="admin")
-                                    <li> <a href="{{route('admin')}}">Admin Page</a></li>
+                                @if(Auth::user()->role==2)
+                                    <li class="has-dropdown"> <a>Admin Page</a>
+                                        <ul class="dropdown">
+                                            <li><a href="{{route('admin')}}">Manage User</a></li>
+                                            <li><a href="{{route('admin_tour.index')}}">Manage tour</a></li>
+                                            <li><a href="{{route('destination.index')}}">Manage destination</a></li>
+                                        </ul>
+                                    </li>
                                 @endif
                                 <li class="has-dropdown"><a>Hello, {{Auth::user()->full_name}} </a>
                                     <ul class="dropdown">

@@ -26,6 +26,8 @@ Auth::routes();
 
 Route::resource('admin_tour', 'TourController');
 Route::resource('destination', 'DestinationController');
+Route::post('searchDes','DestinationController@search')->name('searchDes');
+Route::post('searchTour','TourController@search')->name('searchTour');
 Route::resource('category', 'CategoryController');
 Route::post('ckeditor/image_upload',
     'CKEditorController@upload')->name('upload');
@@ -34,10 +36,6 @@ Route::get('/home',function (){
     }
 );
 Route::get('/admin', 'AccountsController@index')->name('admin');
-Route::get('/getCurrentUser', function() {
-    return Auth::user()->load('roles');
-});
-
 
 Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
 

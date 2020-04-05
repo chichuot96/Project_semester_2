@@ -16,7 +16,6 @@
                     <th scope="col">Email</th>
                     <th scope="col">Birthday</th>
                     <th scope="col">Address</th>
-                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -29,12 +28,11 @@
                         <td>{{$u->email}}</td>
                         <td>{{$u->date_of_birth}}</td>
                         <td>{{$u->address}}</td>
-                        <td>{{$u->status}}</td>
                         <td>
-                            @if($u->status==1)
-                                <a class="btn btn-danger" href="{{route('delete',['id'=>$u->id,'request'=>$request])}}" > delete</a>
+                            @if($u->role==2)
+                                <a class="btn btn-danger" href="{{route('delete',['id'=>$u->id,'request'=>$request])}}" > Down to user</a>
                             @else
-                                <a class="btn btn-success" href="{{route('active',['id'=>$u->id,'request'=>$request])}}" > active</a>
+                                <a class="btn btn-success" href="{{route('active',['id'=>$u->id,'request'=>$request])}}" > Up to admin</a>
                             @endif
                         </td>
                     </tr>
@@ -45,6 +43,10 @@
         </div>
 
     </div>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
 
-    @endsection
+@endsection
 
