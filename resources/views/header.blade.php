@@ -174,6 +174,7 @@
             </ul>
         </div>
     </aside>
+</div>
     <div>
         @section('container')
             @show
@@ -256,7 +257,7 @@
 <div class="gototop js-top">
     <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 </div>
-</div>
+
 
 <!-- jQuery -->
 <script src="{{asset('js/jquery.min.js')}}"></script>

@@ -69,3 +69,6 @@ Route::get('/addT',function(){
     return view('admin/tour/add') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
 });
 Route::post('/addT','Tourcontroller@save')->name('addT');
+Route::post('/payment/{id}/{time}','BookTourController@create');
+Route::get('/return-vnpay/{id}/{time}','BookTourController@return');
+
