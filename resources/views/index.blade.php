@@ -211,14 +211,13 @@
             </div>
             <span class="desc">
                 <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>{{substr($t->tour_name, 0,20)}}</h2>
-{{--						<span class="city">{{$t->destination->name}}</span>--}}
+						<h2>{{substr($t->tour_name, 0,20)}}...</h2>
 						<span class="price">{{$t->price}}VNĐ</span>
-
 					</span>
         </a>
             @endforeach
     </div>
+    <div class="col-md-6 col-md-offset-3 text-center"><br><a href="{{route('tour.index')}}" class="btn btn-info" style="hover: ">MORE</a></div>
 </div>
 
 
@@ -233,21 +232,9 @@
         <div class="row">
             <div class="col-md-12 animate-box">
                 <div class="owl-carousel">
-                    @foreach($tour2 as $t2)
-                    <div class="item">
-                        <div class="hotel-entry">
-                            <a href="{{route('tour.show',$t2->id)}}" class="hotel-img" style="background-image: url({{asset($t2->cover)}});">
-                                <p class="price"><span>{{$t2->price}}</span> VND</p>
-                            </a>
-                            <div class="desc">
-                                <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                <h3><a href="{{route('tour.show',$t2->id)}}">{{$t2->tour_name}}</a></h3>
-                                <span class="place">{{$t2->start_at}}</span>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                            </div>
-                        </div>
-                    </div>
-                        @endforeach
+                    <p>We're upgrading ...</p>
+                    <br>
+                    <p>Please Wait...</p>
                 </div>
             </div>
         </div>
