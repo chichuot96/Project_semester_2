@@ -27,7 +27,7 @@
             @foreach($lsTour as $i => $tour)
                 <tr>
                     <td>{{ $i + 1 }}</td>
-                    <td><img style="width:100px;" src="{{$tour->cover}}" /></td>
+                    <td><img style="width:100px;" src="http://res.cloudinary.com/a123abc/image/upload/{{$tour->cover}}" /></td>
                     <td>{{$tour->destination->name}}</td>
                     <td><a href="{{route('admin_tour.show', $tour->id)}}">View</a></td>
                     <td><a href="{{route('admin_tour.edit', $tour->id)}}">update</a></td>
