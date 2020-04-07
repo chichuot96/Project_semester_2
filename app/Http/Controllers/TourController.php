@@ -43,7 +43,7 @@ class TourController extends Controller
     {
         $lsDes = Destination::all();
         $lsCat = Category::all();
-        return view('admin/tour/add_tour') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
+        return view('admin/tour/add') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
     }
 
 
@@ -73,12 +73,13 @@ class TourController extends Controller
         $tour->vehicle = $request->vehicle;
         $tour->schedule = $request->schedule;
         $tour->time_start = $request->time_start;
-        if($request->hasFile('cover')) {
-            $name = time() . "." . $request->cover->extension();
-            $request->cover->move(public_path('images_upload'), $name);
-            $cover_path = "images_upload/" . $name;
-            $tour->cover = $cover_path;
-        }
+//        if($request->hasFile('cover')) {
+//            $name = time() . "." . $request->cover->extension();
+//            $request->cover->move(public_path('images_upload'), $name);
+//            $cover_path = "images_upload/" . $name;
+//            $tour->cover = $cover_path;
+//        }
+        $tour->cover=$request->imageUrl;
 
             $tour->save();
         $request->session()->flash('success', 'Tour was successful!');
@@ -136,6 +137,37 @@ class TourController extends Controller
 
     }
 
+    public function search(Request $request){
+        $name=$request->input('tour');
+        $numPeo=$request->input('numPeo');
+
+        $lsTour=Tour::where('tour_name','like','%'.$name.'%')
+            ->orWhere('num_of_per','=',$numPeo)->paginate(8);
+
+        return view("tour")
+            ->with(['lsTour'=> $lsTour,'name'=>$name,'num'=>$numPeo]);
+    }
+
+    public function save(Request $request){
+        $tour=new Tour();
+        $tour->destination_id = $request->destination;
+        $tour->tour_name = $request->tour_name;
+        $tour->start_at = $request->start_at;
+        $tour->category_id = $request->category;
+        $tour->price = $request->price;
+        $tour->num_of_per = $request->num_of_per;
+        $tour->num_of_day = $request->num_of_day;
+        $tour->status = $request->status;
+        $tour->discount = $request->discount;
+        $tour->description = $request->description;
+        $tour->vehicle = $request->vehicle;
+        $tour->schedule = $request->schedule;
+        $tour->time_start = $request->time_start;
+        $tour->cover=$request->imageUrl;
+        $tour->save();
+        $request->session()->flash('success', 'Tour was successful!');
+        return redirect()->route("admin_tour.index");
+    }
 
 
 

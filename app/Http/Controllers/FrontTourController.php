@@ -15,7 +15,9 @@ class FrontTourController extends Controller
     public function index()
     {
         $lsTour =Tour::paginate(8);
-        return view('tour') ->with(['lsTour' => $lsTour]);
+        $name="";
+        $numPeo=1;
+        return view('tour') ->with(['lsTour' => $lsTour,'name'=>$name,'num'=>$numPeo]);
     }
 
     /**

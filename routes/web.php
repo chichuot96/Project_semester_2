@@ -1,5 +1,7 @@
 <?php
 
+use App\Category;
+use App\Destination;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,6 +28,8 @@ Auth::routes();
 
 Route::resource('admin_tour', 'TourController');
 Route::resource('destination', 'DestinationController');
+Route::post('searchDes','DestinationController@search')->name('searchDes');
+Route::post('searchTour','TourController@search')->name('searchTour');
 Route::resource('category', 'CategoryController');
 Route::post('ckeditor/image_upload',
     'CKEditorController@upload')->name('upload');
@@ -34,10 +38,6 @@ Route::get('/home',function (){
     }
 );
 Route::get('/admin', 'AccountsController@index')->name('admin');
-Route::get('/getCurrentUser', function() {
-    return Auth::user()->load('roles');
-});
-
 
 Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
 
@@ -63,3 +63,12 @@ Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('l
 
 Route::get('/booktour/{id}','BookTourController@showData')->name('booktour');
 Route::post('/booktour/accept','BooktourController@booked');
+Route::get('/addT',function(){
+    $lsDes = Destination::all();
+    $lsCat = Category::all();
+    return view('admin/tour/add') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
+});
+Route::post('/addT','Tourcontroller@save')->name('addT');
+Route::post('/payment/{id}/{time}','BookTourController@create');
+Route::get('/return-vnpay/{id}/{time}','BookTourController@return');
+

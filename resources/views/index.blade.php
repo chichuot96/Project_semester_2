@@ -6,65 +6,41 @@
             <div class="search-wrap">
                 <div class="container">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a data-toggle="tab" href="#flight"><i class="flaticon-plane"></i> Flight</a></li>
-                        <li><a data-toggle="tab" href="#hotel"><i class="flaticon-resort"></i> Hotel</a></li>
-                        <li><a data-toggle="tab" href="#car"><i class="flaticon-car"></i> Car Rent</a></li>
-                        <li><a data-toggle="tab" href="#cruises"><i class="flaticon-boat"></i> Cruises</a></li>
+                        <li class="active"><a data-toggle="tab" href="#flight"><i class="flaticon-plane"></i> Tour</a></li>
+                        <li><a data-toggle="tab" href="#hotel"><i class="flaticon-resort"></i>Destination</a></li>
                     </ul>
                 </div>
                 <div class="tab-content">
                     <div id="flight" class="tab-pane fade in active">
-                        <form method="post" class="colorlib-form">
+                        <form method="post" action="{{route('searchTour')}}" class="colorlib-form">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="date">Where:</label>
+                                        <label >Where:</label>
                                         <div class="form-field">
-                                            <input type="text" id="location" class="form-control" placeholder="Search Location">
+                                            <input type="text" name="tour" class="form-control" placeholder="Search name">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="date">Check-in:</label>
-                                        <div class="form-field">
-                                            <i class="icon icon-calendar2"></i>
-                                            <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="date">Check-out:</label>
-                                        <div class="form-field">
-                                            <i class="icon icon-calendar2"></i>
-                                            <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="guests">Guest</label>
+                                        <label >Guest</label>
                                         <div class="form-field">
-                                            <i class="icon icon-arrow-down3"></i>
-                                            <select name="people" id="people" class="form-control">
-                                                <option value="#">1</option>
-                                                <option value="#">2</option>
-                                                <option value="#">3</option>
-                                                <option value="#">4</option>
-                                                <option value="#">5+</option>
-                                            </select>
+                                            <input type="text" name="numPeo" class="form-control" placeholder="Number of guest">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
-                                    <input type="submit" name="submit" id="submit" value="Find Flights" class="btn btn-primary btn-block">
+                                    <input type="submit" name="submit" id="submit" value="Find Tour" class="btn btn-primary btn-block">
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div id="hotel" class="tab-pane fade">
-                        <form method="post" class="colorlib-form">
+                        <form method="post" action="{{route('searchDes')}}" class="colorlib-form">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="row">
                                 <div class="col-md-2">
                                     <div class="booknow">
@@ -74,115 +50,14 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label for="date">Check-in:</label>
+                                        <label >Check-in:</label>
                                         <div class="form-field">
-                                            <i class="icon icon-calendar2"></i>
-                                            <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="date">Check-out:</label>
-                                        <div class="form-field">
-                                            <i class="icon icon-calendar2"></i>
-                                            <input type="text" id="date" class="form-control date" placeholder="Check-out date">
+                                            <input type="text" name="destination" class="form-control " placeholder="Search destination">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
-                                    <div class="form-group">
-                                        <label for="guests">Guest</label>
-                                        <div class="form-field">
-                                            <i class="icon icon-arrow-down3"></i>
-                                            <select name="people" id="people" class="form-control">
-                                                <option value="#">1</option>
-                                                <option value="#">2</option>
-                                                <option value="#">3</option>
-                                                <option value="#">4</option>
-                                                <option value="#">5+</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <input type="submit" name="submit" id="submit" value="Find Hotel" class="btn btn-primary btn-block">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="car" class="tab-pane fade">
-                        <form method="post" class="colorlib-form">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="date">Where:</label>
-                                        <div class="form-field">
-                                            <input type="text" id="location" class="form-control" placeholder="Search Location">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="date">Start Date:</label>
-                                        <div class="form-field">
-                                            <i class="icon icon-calendar2"></i>
-                                            <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="date">Return Date:</label>
-                                        <div class="form-field">
-                                            <i class="icon icon-calendar2"></i>
-                                            <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <input type="submit" name="submit" id="submit" value="Find Car" class="btn btn-primary btn-block">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="cruises" class="tab-pane fade">
-                        <form method="post" class="colorlib-form">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="date">Where:</label>
-                                        <div class="form-field">
-                                            <input type="text" id="location" class="form-control" placeholder="Search Location">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="date">Start Date:</label>
-                                        <div class="form-field">
-                                            <i class="icon icon-calendar2"></i>
-                                            <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="guests">Categories</label>
-                                        <div class="form-field">
-                                            <i class="icon icon-arrow-down3"></i>
-                                            <select name="category" id="category" class="form-control">
-                                                <option value="#">Suite</option>
-                                                <option value="#">Super Deluxe</option>
-                                                <option value="#">Balcony</option>
-                                                <option value="#">Economy</option>
-                                                <option value="#">Luxury</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-2">
-                                    <input type="submit" name="submit" id="submit" value="Find Cruises" class="btn btn-primary btn-block">
+                                    <input type="submit" name="submit" id="submit" value="Search" class="btn btn-primary btn-block">
                                 </div>
                             </div>
                         </form>
@@ -206,6 +81,7 @@
     </div>
     <div class="tour-wrap">
         @foreach($tour1 as $t)
+<<<<<<< HEAD
         <a href="{{route('tour.show',$t->id)}}" class="tour-entry animate-box">
             <div class="tour-img" style="background-image: url({{asset($t->cover)}});">
             </div>
@@ -214,6 +90,21 @@
 						<h2>{{substr($t->tour_name, 0,20)}}...</h2>
 						<span class="price">{{$t->price}}VNĐ</span>
 					</span>
+=======
+        <a href="{{route('admin_tour.show',$t->id)}}" class="tour-entry animate-box">
+            <div class="tour-img" style="background-image: url(http://res.cloudinary.com/a123abc/image/upload/{{asset($t->cover)}});">
+            </div>
+            <div class="desc">
+                <p class="star">
+                    <span>
+                        <i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i>
+                    </span> 545 Reviews</p>
+                <a href="{{route('admin_tour.show',$t->id)}}">{{$t->tour_name}}</a>
+                <span class="city">{{$t->start_at}}</span>
+                <span class="price">{{$t->price}}</span>
+            </div>
+
+>>>>>>> c5dd07fc295527734fc85cc439525157b0e4b0c9
         </a>
             @endforeach
     </div>

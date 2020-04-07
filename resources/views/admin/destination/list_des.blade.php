@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('header')
 
-@section('content')
+@section('container')
     <div class="container">
         <p>destination management</p>
         <!-- <a class="btn btn-primary" href="destination/create">Add</a> -->

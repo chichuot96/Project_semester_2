@@ -1,5 +1,5 @@
-@extends("layouts.app")
-@section("content")
+@extends("header")
+@section("container")
 
 
     <div class="container">
