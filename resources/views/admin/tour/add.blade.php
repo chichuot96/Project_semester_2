@@ -78,7 +78,7 @@
                 filebrowserUploadMethod: 'form'} );
     </script>
     <script>
-        alert("hello")
+        
         var cloudName= "a123abc";
         var unsignedUploadPreset="qbhmhxzq";
         var img = document.querySelector('[name="image"]');
