@@ -13,6 +13,10 @@
                 <input type="text" class="form-control" name="tourLength" readonly="readonly" value="{{$tour->num_of_day}} Ngày" >
             </div>
             <div class="form-group">
+                <label >Số người</label>
+                <input type="number" class="form-control" name="numPer" placeholder="Enter number of guest" max="{{$tour->num_of_per}}" min="0" required>
+            </div>
+            <div class="form-group">
                 <label >Ngày khởi hành</label>
                 <input type="text" class="form-control" name="timeStart" readonly="readonly" value="{{$tour->time_start}} " >
             </div>
