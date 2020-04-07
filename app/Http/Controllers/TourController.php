@@ -43,7 +43,7 @@ class TourController extends Controller
     {
         $lsDes = Destination::all();
         $lsCat = Category::all();
-        return view('admin/tour/add_tour') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
+        return view('admin/tour/add') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
     }
 
 
