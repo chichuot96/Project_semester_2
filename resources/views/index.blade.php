@@ -81,18 +81,8 @@
     </div>
     <div class="tour-wrap">
         @foreach($tour1 as $t)
-<<<<<<< HEAD
-        <a href="{{route('tour.show',$t->id)}}" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url({{asset($t->cover)}});">
-            </div>
-            <span class="desc">
-                <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-						<h2>{{substr($t->tour_name, 0,20)}}...</h2>
-						<span class="price">{{$t->price}}VNĐ</span>
-					</span>
-=======
         <a href="{{route('admin_tour.show',$t->id)}}" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url(http://res.cloudinary.com/a123abc/image/upload/{{asset($t->cover)}});">
+            <div class="tour-img" style="background-image: url(http://res.cloudinary.com/a123abc/image/upload/{{$t->cover}});">
             </div>
             <div class="desc">
                 <p class="star">
@@ -104,7 +94,6 @@
                 <span class="price">{{$t->price}}</span>
             </div>
 
->>>>>>> c5dd07fc295527734fc85cc439525157b0e4b0c9
         </a>
             @endforeach
     </div>
@@ -123,9 +112,12 @@
         <div class="row">
             <div class="col-md-12 animate-box">
                 <div class="owl-carousel">
+
                     <p>We're upgrading ...</p>
                     <br>
                     <p>Please Wait...</p>
+
+
                 </div>
             </div>
         </div>
