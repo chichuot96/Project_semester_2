@@ -97,7 +97,8 @@
                 </a>
                 <div class="card-body" style="margin-top: 10px">
                     <h5 class="card-title"><a style="color: blue; margin-top:10px;height: 40px" href="{{route('admin_tour.show',$t->id)}}">{{$t->tour_name}}</a></h5>
-                    <p class="card-text" stlye="height: 40px">Start at: {{$t->start_at}}</p>
+                    <span class="card-text" stlye="height: 20px">Start at: {{$t->start_at}}</span><br>
+                    <span> Thời gian: {{$t->num_of_day}} ngày</span>
                     <a href="#" class="btn btn-primary">{{$t->price}}</a>
                 </div>
             </div>
@@ -106,24 +107,24 @@
         </div>
 
     </div>
-    <div class="tour-wrap">
+{{--    <div class="tour-wrap">--}}
 
-        @foreach($tour1 as $t)
-        <a href="{{route('tour.show',$t->id)}}" class="tour-entry animate-box">
-            <div class="tour-img" style="background-image: url(http://res.cloudinary.com/a123abc/image/upload/{{$t->cover}});">
-            </div>
-            <div class="desc">
-                <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                <h2>{{substr($t->tour_name, 0, 30)}}...</h2>
-                <span class="city">{{$t->destination->name}}</span>
-                <span class="price">{{$t->price}}VNĐ</span>
-            </div>
+{{--        @foreach($tour1 as $t)--}}
+{{--        <a href="{{route('tour.show',$t->id)}}" class="tour-entry animate-box">--}}
+{{--            <div class="tour-img" style="background-image: url(http://res.cloudinary.com/a123abc/image/upload/{{$t->cover}});">--}}
+{{--            </div>--}}
+{{--            <div class="desc">--}}
+{{--                <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>--}}
+{{--                <h2>{{substr($t->tour_name, 0, 30)}}...</h2>--}}
+{{--                <span class="city">{{$t->destination->name}}</span>--}}
+{{--                <span class="price">{{$t->price}}VNĐ</span>--}}
+{{--            </div>--}}
 
 
-        </a>
-            @endforeach
+{{--        </a>--}}
+{{--            @endforeach--}}
 
-    </div>
+{{--    </div>--}}
 
     </div>
     <div class="col-md-6 col-md-offset-3 text-center"><br><a href="{{route('tour.index')}}" class="btn btn-info" >MORE</a></div>
@@ -139,12 +140,24 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 animate-box">
-                <div class="owl-carousel">
+                <div class="tour-wrap">
 
+                    @foreach($tour2 as $t)
+                    <a href="{{route('tour.show',$t->id)}}" class="tour-entry animate-box">
+                        <div class="tour-img" style="background-image: url(http://res.cloudinary.com/a123abc/image/upload/{{$t->cover}});">
+                        </div>
+                        <div class="desc">
+                            <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
+                            <h2>{{substr($t->tour_name, 0, 30)}}...</h2>
+                            <span class="city">{{$t->destination->name}}</span>
+                            <span class="price">{{$t->price}}VNĐ</span>
+                        </div>
+
+
+                    </a>
+                        @endforeach
 
                 </div>
-            </div>
         </div>
     </div>
 </div>

@@ -41,13 +41,16 @@ class DestinationController extends Controller
     public function store(Request $request)
     {
         $name = $request->input('name');
-
+        $description=$request->input('description');
+        $img=$request->input('imageUrl');
         $destination = new Destination();
         $destination->name = $name;
+        $destination->description=$description;
+        $destination->image=$img;
         $destination->save();
 
-        $request->session()->flash('success', 'Category was successful!');
-        return redirect()->route("category.index");
+        $request->session()->flash('success', 'Add destination was successful!');
+        return redirect()->route("destination.index");
     }
 
     /**
@@ -69,7 +72,8 @@ class DestinationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $des=Destination::find($id);
+        return view('admin/destination/edit')->with(['des'=>$des]);
     }
 
     /**
@@ -81,7 +85,12 @@ class DestinationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $des=Destination::find($id);
+        $des->name=$request->input('name');
+        $des->description=$request->input('description');
+        $des->image=$request->input('imageUrl');
+        $des->save();
+        return redirect()->route('destination.index');
     }
 
     /**
@@ -96,6 +105,7 @@ class DestinationController extends Controller
     }
     public function search(Request $request){
         $name=$request->input('destination');
+
         $lsDestinations=DB::table('destinations')->where('name','like','%'.$name.'%')
             ->paginate(8);
         return view('admin/destination/list_des')-> with([

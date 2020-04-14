@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Destination;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Tour;
@@ -21,6 +22,10 @@ class HomeController extends Controller
         ->where('category_id','=',$cate_id)
             ->where('time_start','>',$date)
             ->paginate(8);
+    }
+
+    public function listDestination(){
+
     }
 
 }
