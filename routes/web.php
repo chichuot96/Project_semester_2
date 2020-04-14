@@ -26,7 +26,7 @@ Route::get('active/{id}','AccountsController@active')->name('active');
 
 Auth::routes();
 
-Route::resource('admin_tour', 'TourController');
+Route::resource('admin_tour', 'TourController')->middleware('ad');
 Route::resource('destination', 'DestinationController');
 Route::post('searchDes','DestinationController@search')->name('searchDes');
 Route::post('searchTour','TourController@search')->name('searchTour');
@@ -37,7 +37,7 @@ Route::get('/home',function (){
         return redirect('index');
     }
 );
-Route::get('/admin', 'AccountsController@index')->name('admin');
+Route::get('/admin', 'AccountsController@index')->name('admin')->middleware('ad');
 
 Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
 
@@ -71,4 +71,5 @@ Route::get('/addT',function(){
 Route::post('/addT','Tourcontroller@save')->name('addT');
 Route::post('/payment/{id}/{time}','BookTourController@create');
 Route::get('/return-vnpay/{id}/{time}','BookTourController@return');
+
 
