@@ -49,6 +49,7 @@
 
     <!-- Theme style  -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+
     <script
         src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
