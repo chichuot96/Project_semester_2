@@ -17,7 +17,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label >Where:</label>
+                                        <label >Name:</label>
                                         <div class="form-field">
                                             <input type="text" name="tour" class="form-control" placeholder="Search name">
                                         </div>
@@ -56,6 +56,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label >Pick up at:</label>
+                                        <div class="form-field">
+                                            <input type="text" name="start_at" class="form-control " placeholder="Search place">
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="col-md-2">
                                     <input type="submit" name="submit" id="submit" value="Search" class="btn btn-primary btn-block">
                                 </div>
@@ -81,23 +89,21 @@
     </div>
     <div class="tour-wrap">
         @foreach($tour1 as $t)
-        <a href="{{route('admin_tour.show',$t->id)}}" class="tour-entry animate-box">
+        <a href="{{route('tour.show',$t->id)}}" class="tour-entry animate-box">
             <div class="tour-img" style="background-image: url(http://res.cloudinary.com/a123abc/image/upload/{{$t->cover}});">
             </div>
             <div class="desc">
-                <p class="star">
-                    <span>
-                        <i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i>
-                    </span> 545 Reviews</p>
-                <a href="{{route('admin_tour.show',$t->id)}}">{{$t->tour_name}}</a>
-                <span class="city">{{$t->start_at}}</span>
-                <span class="price">{{$t->price}}</span>
+                <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
+                <h2>{{substr($t->tour_name, 0, 30)}}...</h2>
+                <span class="city">{{$t->destination->name}}</span>
+                <span class="price">{{$t->price}}VNĐ</span>
             </div>
+
 
         </a>
             @endforeach
     </div>
-    <div class="col-md-6 col-md-offset-3 text-center"><br><a href="{{route('tour.index')}}" class="btn btn-info" style="hover: ">MORE</a></div>
+    <div class="col-md-6 col-md-offset-3 text-center"><br><a href="{{route('tour.index')}}" class="btn btn-info" >MORE</a></div>
 </div>
 
 

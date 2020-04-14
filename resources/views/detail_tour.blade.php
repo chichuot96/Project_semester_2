@@ -15,7 +15,7 @@
                 </strong>
             </h1>
             <div class="row">
-                <div class="col-md-9">
+                <div class="col-md-8">
                     <div class="row">
                         <div class="wrap-division">
                             {!! $tour->description !!}
@@ -24,7 +24,7 @@
                 </div>
 
                 <!-- SIDEBAR-->
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="sidebar-wrap">
                         <div class="side search-wrap animate-box">
                             <h3 class="sidebar-heading">Tour information</h3>
@@ -32,47 +32,41 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="date">Where:</label>
-                                            <div class="form-field">
-                                                <input type="text" id="location" class="form-control" placeholder="Search Location">
-                                            </div>
+                                            <label for="date"><strong>Where:</strong> {{$tour->destination->name}}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="date">Check-in:</label>
-                                            <div class="form-field">
-                                                <i class="icon icon-calendar2"></i>
-                                                <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-                                            </div>
+                                            <label for="date"><strong>Pick up at:</strong> {{$tour->start_at}}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="date">Check-out:</label>
-                                            <div class="form-field">
-                                                <i class="icon icon-calendar2"></i>
-                                                <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-                                            </div>
+                                            <label for="date"><strong>Type:</strong> {{$tour->category->name}}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="guests">Guest</label>
-                                            <div class="form-field">
-                                                <i class="icon icon-arrow-down3"></i>
-                                                <select name="people" id="people" class="form-control">
-                                                    <option value="#">1</option>
-                                                    <option value="#">2</option>
-                                                    <option value="#">3</option>
-                                                    <option value="#">4</option>
-                                                    <option value="#">5+</option>
-                                                </select>
-                                            </div>
+                                            <label for="date"><strong>Check in:</strong> {{date_format(date_create($tour->time_start), 'd-m-Y H:i')}}</label>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
-                                        <input type="submit" name="submit" id="submit" value="Find Flights" class="btn btn-primary btn-block">
+                                        <div class="form-group">
+                                            <label for="date"><strong>Number of day:</strong> {{$tour->num_of_day}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="date"><strong>Ticket left:</strong> {{$tour->num_of_per}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="date"><strong>Price:</strong> {{$tour->price}}VNĐ</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <a href="{{route('booktour',['id'=>$tour->id])}}" class="btn btn-primary btn-block">Book Tour</a>
                                     </div>
                                 </div>
                             </form>
@@ -81,7 +75,7 @@
                 </div>
             </div>
 
-            <a class="btn btn-info" href="{{route('booktour',['id'=>$tour->id])}}"> Book tour</a>
+            <a class="btn btn-primary" href="{{route('booktour',['id'=>$tour->id])}}"> Book tour</a>
         </div>
     </div>
 

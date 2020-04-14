@@ -142,7 +142,7 @@ class TourController extends Controller
         $numPeo=$request->input('numPeo');
 
         $lsTour=Tour::where('tour_name','like','%'.$name.'%')
-            ->orWhere('num_of_per','=',$numPeo)->paginate(8);
+            ->where('num_of_per','>=',$numPeo)->paginate(8);
 
         return view("tour")
             ->with(['lsTour'=> $lsTour,'name'=>$name,'num'=>$numPeo]);
