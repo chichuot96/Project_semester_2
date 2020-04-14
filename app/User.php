@@ -19,7 +19,9 @@ class User extends Authenticatable
     protected $fillable = [
         'user_name', 'email', 'password','full_name','status','date_of_birth','phone_number','address'
     ];
-
+    public function isAdmin(){
+        return $this->role==2;
+    }
     public function roles()
     {
         return $this->belongsToMany(Role::class);
