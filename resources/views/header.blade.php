@@ -91,6 +91,7 @@
                                             <li><a href="{{route('admin')}}">Manage User</a></li>
                                             <li><a href="{{route('admin_tour.index')}}">Manage tour</a></li>
                                             <li><a href="{{route('destination.index')}}">Manage destination</a></li>
+                                            <li><a href="{{route('category.index')}}">Manage category</a></li>
                                         </ul>
                                     </li>
                                 @endif
@@ -233,10 +234,10 @@
             <div class="col-md-3 col-md-push-1">
                 <h4>Contact Information</h4>
                 <ul class="colorlib-footer-links">
-                    <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
-                    <li><a href="tel://1234567920">+ 1235 2355 98</a></li>
-                    <li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-                    <li><a href="#">yoursite.com</a></li>
+                    <li>Detech building, <br>No.8 Tôn Thất Thuyết St</li>
+                    <li><a href="tel://8461329400">+ 8496 1329 400</a></li>
+                    <li><a href="mailto:info@yoursite.com">amazingviettourguide@ygmail.com</a></li>
+                    <li><a href="#"></a></li>
                 </ul>
             </div>
         </div>
