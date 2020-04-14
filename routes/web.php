@@ -71,5 +71,6 @@ Route::get('/addT',function(){
 Route::post('/addT','Tourcontroller@save')->name('addT');
 Route::post('/payment/{id}/{time}','BookTourController@create');
 Route::get('/return-vnpay/{id}/{time}','BookTourController@return');
+Route::post('/update-des/{id}','DestinationController@update')->name('destination.update');
 
 
