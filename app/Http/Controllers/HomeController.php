@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Destination;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Tour;
@@ -35,6 +36,20 @@ class HomeController extends Controller
         $tour=Tour::where('destination_id','=',$d)->paginate(8);
         return view('detail_destination')->with(['tours'=>$tour,'des'=>$des]);
 
+    }
+
+    public function userInfo($id){
+        $user=User::find($id);
+        $name=$user->full_name;
+        $tours=DB::table('History')->where('user_id','=',$name)->paginate(8);
+
+        foreach ($tours as $tour){
+            $t=Tour::find($tour->tour_id);
+            $tour->cover=$t->cover;
+            $tour->time=$t->time_start;
+        }
+
+        return view('thong-tin-ca-nhan')->with(['tours'=>$tours,'user'=>$user]);
     }
 
 

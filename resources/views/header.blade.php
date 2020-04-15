@@ -79,7 +79,7 @@
                             <li >
                                 <a href="{{route('tour.index')}}">Tours</a>
                             </li>
-                            <li><a href="{{route('destination')}}">Destination</a></li>
+                            <li><a href="{{route('des')}}">Destination</a></li>
                             <li><a href="{{route('service')}}">Services</a></li>
                             <li><a href="{{route('blog')}}">Blog</a></li>
                             <li><a href="{{route('about')}}">About</a></li>
@@ -99,7 +99,7 @@
                                 <li class="has-dropdown"><a>Hello, {{Auth::user()->full_name}} </a>
                                     <ul class="dropdown">
                                         <li><a href="{{route('logout')}}">Logout</a></li>
-                                        <li><a >Information</a></li>
+                                        <li><a href="{{route('info',Auth::user()->id)}}">Information</a></li>
                                     </ul>
                                 </li>
                             @else
