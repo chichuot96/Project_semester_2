@@ -79,7 +79,27 @@
             </div>
         </div>
     </div>
-    <div class="tour-wrap">
+    <div>
+        <div class="row" style="padding: 15px">
+        @foreach($tour1 as $t)
+        <div class="col-md-3 col-sm-6 d-flex align-items-stretch" style="margin-top: 15px">
+            <div class="card" style=" margin: auto">
+                <a href="{{route('admin_tour.show',$t->id)}}">
+                    <img class="card-img-top tour-img" src="http://res.cloudinary.com/a123abc/image/upload/{{$t->cover}}" alt="Card image cap" style="width: 286px; height: 180px">
+                </a>    
+                <div class="card-body" style="margin-top: 10px">
+                    <h5 class="card-title"><a style="color: blue; margin-top:10px;height: 40px" href="{{route('admin_tour.show',$t->id)}}">{{$t->tour_name}}</a></h5>
+                    <p class="card-text" stlye="height: 40px">Start at: {{$t->start_at}}</p>
+                    <a href="#" class="btn btn-primary">{{$t->price}}</a>
+                </div>
+            </div>
+        </div>    
+        @endforeach
+        </div>
+
+    </div>
+    <!-- <div class="tour-wrap">
+
         @foreach($tour1 as $t)
         <a href="{{route('admin_tour.show',$t->id)}}" class="tour-entry animate-box">
             <div class="tour-img" style="background-image: url(http://res.cloudinary.com/a123abc/image/upload/{{$t->cover}});">
@@ -96,11 +116,11 @@
 
         </a>
             @endforeach
-    </div>
+    </div> -->
 </div>
 
 
-<div id="colorlib-hotel" style="margin-top: -95px;">
+<!-- <div id="colorlib-hotel" style="margin-top: -95px;">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
@@ -130,7 +150,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
 <div id="colorlib-subscribe" style="background-image: url({{asset('images/img_bg_2.jpg')}});" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
