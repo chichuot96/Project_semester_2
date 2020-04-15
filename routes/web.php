@@ -42,7 +42,7 @@ Route::get('/home',function (){
 
 Route::get('/index', 'HomeController@index')->name('index');
 Route::resource('/tour', 'FrontTourController');
-Route::get('/destination','HomeController@listDestination')->name('destination');
+Route::get('/des','HomeController@listDestination')->name('des');
 Route::get('/blog',function (){
     return view('blog');
 })->name('blog');
@@ -70,7 +70,7 @@ Route::post('/addT','Tourcontroller@save')->name('addT');
 
 
 Route::group(['middleware'=>'auth'],function (){
-    Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
+    Route::get('/info/{id}', 'HomeController@userInfo')->name('info');
     Route::post('/booktour/accept','BooktourController@booked');
     Route::get('/booktour/{id}','BookTourController@showData')->name('booktour');
     Route::post('/payment/{id}/{time}','BookTourController@create');
