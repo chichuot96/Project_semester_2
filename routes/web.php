@@ -43,9 +43,7 @@ Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
 
 Route::get('/index', 'HomeController@index')->name('index');
 Route::resource('/tour', 'FrontTourController');
-Route::get('/hotel',function (){
-    return view('hotel');
-})->name('hotel');
+Route::get('/destination','HomeController@listDestination')->name('destination');
 Route::get('/blog',function (){
     return view('blog');
 })->name('blog');
@@ -72,5 +70,6 @@ Route::post('/addT','Tourcontroller@save')->name('addT');
 Route::post('/payment/{id}/{time}','BookTourController@create');
 Route::get('/return-vnpay/{id}/{time}','BookTourController@return');
 Route::post('/update-des/{id}','DestinationController@update')->name('destination.update');
+Route::get('/destination_detail/{id}','HomeController@detailDes')->name('destination_detail');
 
 

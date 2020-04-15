@@ -105,10 +105,9 @@ class DestinationController extends Controller
     }
     public function search(Request $request){
         $name=$request->input('destination');
-
         $lsDestinations=DB::table('destinations')->where('name','like','%'.$name.'%')
             ->paginate(8);
-        return view('admin/destination/list_des')-> with([
+        return view('destination')-> with([
             'lsDestinations' => $lsDestinations
         ]);
     }

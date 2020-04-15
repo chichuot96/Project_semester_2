@@ -32,11 +32,6 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="date"><strong>Where:</strong> {{$tour->destination->name}}</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
                                             <label for="date"><strong>Pick up at:</strong> {{$tour->start_at}}</label>
                                         </div>
                                     </div>

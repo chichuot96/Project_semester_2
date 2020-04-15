@@ -50,17 +50,9 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
-                                        <label >Check-in:</label>
+                                        <label >Destination </label>
                                         <div class="form-field">
                                             <input type="text" name="destination" class="form-control " placeholder="Search destination">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label >Pick up at:</label>
-                                        <div class="form-field">
-                                            <input type="text" name="start_at" class="form-control " placeholder="Search place">
                                         </div>
                                     </div>
                                 </div>
