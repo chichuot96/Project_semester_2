@@ -23,10 +23,11 @@ class TourController extends Controller
 
         if(isset($search_title)) {
             $lsTour =
-                Tour::where('title', 'like', "%$search_title%")
+                Tour::where('status','=',1)
+                ->where('title', 'like', "%$search_title%")
                     ->paginate(10);
         } else {
-            $lsTour = Tour::paginate(10);
+            $lsTour = Tour::where('status','=',1)->paginate(10);
         }
 
         return view("admin.tour.list_tour")
@@ -106,7 +107,10 @@ class TourController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tour=Tour::find($id);
+        $lsDes = Destination::all();
+        $lsCat = Category::all();
+        return view('admin/tour/edit')->with(['tour'=>$tour,'lsDes' => $lsDes, 'lsCat' => $lsCat]);
     }
 
     /**
@@ -118,7 +122,24 @@ class TourController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tour=Tour::find($id);
+        $tour->destination_id = $request->destination;
+        $tour->tour_name = $request->tour_name;
+        $tour->start_at = $request->start_at;
+        $tour->category_id = $request->category;
+        $tour->price = $request->price;
+        $tour->num_of_per = $request->num_of_per;
+        $tour->num_of_day = $request->num_of_day;
+        $tour->status = $request->status;
+        $tour->discount = $request->discount;
+        $tour->description = $request->description;
+        $tour->vehicle = $request->vehicle;
+        $tour->schedule = $request->schedule;
+        $tour->time_start = $request->time_start;
+        $tour->cover=$request->imageUrl;
+        $tour->save();
+        $request->session()->flash('success', 'Update tour was successful!');
+        return redirect()->route('admin_tour.index');
     }
 
 
@@ -141,8 +162,9 @@ class TourController extends Controller
         $name=$request->input('tour');
         $numPeo=$request->input('numPeo');
 
-        $lsTour=Tour::where('tour_name','like','%'.$name.'%')
-            ->orWhere('num_of_per','=',$numPeo)->paginate(8);
+        $lsTour=Tour::where('status','=',1)
+        ->where('tour_name','like','%'.$name.'%')
+            ->where('num_of_per','>=',$numPeo)->paginate(8);
 
         return view("tour")
             ->with(['lsTour'=> $lsTour,'name'=>$name,'num'=>$numPeo]);
@@ -165,7 +187,7 @@ class TourController extends Controller
         $tour->time_start = $request->time_start;
         $tour->cover=$request->imageUrl;
         $tour->save();
-        $request->session()->flash('success', 'Tour was successful!');
+        $request->session()->flash('success', 'Create tour was successful!');
         return redirect()->route("admin_tour.index");
     }
 

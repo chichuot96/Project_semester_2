@@ -92,6 +92,7 @@
                                             <li><a href="{{route('admin')}}">Manage User</a></li>
                                             <li><a href="{{route('admin_tour.index')}}">Manage tour</a></li>
                                             <li><a href="{{route('destination.index')}}">Manage destination</a></li>
+                                            <li><a href="{{route('category.index')}}">Manage category</a></li>
                                         </ul>
                                     </li>
                                 @endif
@@ -234,10 +235,10 @@
             <div class="col-md-3 col-md-push-1">
                 <h4>Contact Information</h4>
                 <ul class="colorlib-footer-links">
-                    <li>291 South 21th Street, <br> Suite 721 New York NY 10016</li>
-                    <li><a href="tel://1234567920">+ 1235 2355 98</a></li>
-                    <li><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-                    <li><a href="#">yoursite.com</a></li>
+                    <li>Detech building, <br>No.8 Tôn Thất Thuyết St</li>
+                    <li><a href="tel://8461329400">+ 8496 1329 400</a></li>
+                    <li><a href="mailto:info@yoursite.com">amazingviettourguide@ygmail.com</a></li>
+                    <li><a href="#"></a></li>
                 </ul>
             </div>
         </div>
@@ -281,6 +282,33 @@
 <script src="{{asset('js/jquery.stellar.min.js')}}"></script>
 <!-- Main -->
 <script src="{{asset('js/main.js')}}"></script>
+<script src="{{asset('js/bootstrap-notify.min.js')}}"></script>
+<script>
 
+    var cloudName= "a123abc";
+    var unsignedUploadPreset="qbhmhxzq";
+    var img = document.querySelector('[name="image"]');
+    img.onchange = function () {
+        var file = this.files[0];
+        var url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var responseDataJson = JSON.parse(this.responseText);
+                console.log(responseDataJson);
+                var imageUrl = document.querySelector('input[name="imageUrl"]');
+                imageUrl.value = responseDataJson.public_id;
+                document.getElementById('image-preview').src = responseDataJson.url;
+            }
+        }
+        xhr.open('POST', url, true);
+        var fd = new FormData();
+        fd.append('upload_preset', unsignedUploadPreset);
+        fd.append('tags', 'browser_upload');
+        fd.append('file', file);
+        xhr.send(fd);
+    }
+
+</script>
 </body>
 </html>
