@@ -79,7 +79,7 @@
                             <li >
                                 <a href="{{route('tour.index')}}">Tours</a>
                             </li>
-                            <li><a href="{{route('hotel')}}">Hotels</a></li>
+                            <li><a href="{{route('destination')}}">Destination</a></li>
                             <li><a href="{{route('service')}}">Services</a></li>
                             <li><a href="{{route('blog')}}">Blog</a></li>
                             <li><a href="{{route('about')}}">About</a></li>

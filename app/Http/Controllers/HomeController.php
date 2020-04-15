@@ -25,7 +25,17 @@ class HomeController extends Controller
     }
 
     public function listDestination(){
+        $des=DB::table('destinations')->paginate(8);
+        return view('destination')->with(['lsDestinations'=>$des]);
+    }
+
+    public function detailDes($id){
+        $des=Destination::find($id);
+        $d=$des->id;
+        $tour=Tour::where('destination_id','=',$d)->paginate(8);
+        return view('detail_destination')->with(['tours'=>$tour,'des'=>$des]);
 
     }
+
 
 }
