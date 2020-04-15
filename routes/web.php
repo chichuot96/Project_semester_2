@@ -19,14 +19,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('index');
 });
-Route::get('/searchUser','AccountsController@search')->name('search');
+
 Route::resource('accounts', 'AccountsController');
-Route::get('delete/{id}','AccountsController@destroy')->name('delete');
-Route::get('active/{id}','AccountsController@active')->name('active');
+
 
 Auth::routes();
 
-Route::resource('admin_tour', 'TourController')->middleware('ad');
+//Route::resource('admin_tour', 'TourController')->middleware('ad');
 Route::resource('destination', 'DestinationController');
 Route::post('searchDes','DestinationController@search')->name('searchDes');
 Route::post('searchTour','TourController@search')->name('searchTour');
@@ -37,9 +36,9 @@ Route::get('/home',function (){
         return redirect('index');
     }
 );
-Route::get('/admin', 'AccountsController@index')->name('admin')->middleware('ad');
+//Route::get('/admin', 'AccountsController@index')->name('admin')->middleware('ad');
 
-Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
+
 
 Route::get('/index', 'HomeController@index')->name('index');
 Route::resource('/tour', 'FrontTourController');
@@ -59,17 +58,31 @@ Route::get('/service',function (){
 Route::get('mail/send', 'MailController@send');
 Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('logout');
 
-Route::get('/booktour/{id}','BookTourController@showData')->name('booktour');
-Route::post('/booktour/accept','BooktourController@booked');
+
+
 Route::get('/addT',function(){
     $lsDes = Destination::all();
     $lsCat = Category::all();
     return view('admin/tour/add') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
 });
 Route::post('/addT','Tourcontroller@save')->name('addT');
-Route::post('/payment/{id}/{time}','BookTourController@create');
-Route::get('/return-vnpay/{id}/{time}','BookTourController@return');
-Route::post('/update-des/{id}','DestinationController@update')->name('destination.update');
-Route::get('/destination_detail/{id}','HomeController@detailDes')->name('destination_detail');
 
+
+
+Route::group(['middleware'=>'auth'],function (){
+    Route::get('/thong-tin-ca-nhan', 'ThongTinCaNhanController@thongtincanhan');
+    Route::post('/booktour/accept','BooktourController@booked');
+    Route::get('/booktour/{id}','BookTourController@showData')->name('booktour');
+    Route::post('/payment/{id}/{time}','BookTourController@create');
+    Route::get('/return-vnpay/{id}/{time}','BookTourController@return');
+});
+Route::group(['middleware'=>'ad'],function(){
+    Route::post('/update-des/{id}','DestinationController@update')->name('destination.update');
+    Route::get('/destination_detail/{id}','HomeController@detailDes')->name('destination_detail');
+    Route::resource('admin_tour', 'TourController');
+    Route::get('/admin', 'AccountsController@index')->name('admin');
+    Route::get('delete/{id}','AccountsController@destroy')->name('delete');
+    Route::get('active/{id}','AccountsController@active')->name('active');
+    Route::get('/searchUser','AccountsController@search')->name('search');
+});
 
