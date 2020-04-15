@@ -1,12 +1,10 @@
 @extends('header')
-
 @section('container')
-
-<div class="container">
-    <div class="row ">
-        <div class="col-md-8">
-            <div class="card ">
-                <div class="card-header">{{ __('Login') }}</div>
+<div class="container d-flex  align-items-center">
+    <div class="row justify-content-center">
+        <div class="col-md-12 ">
+            <div class="card" style="padding: 0 90px">
+                <div class="card-header" style="margin: 35px 0">{{ __('Login') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
