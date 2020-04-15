@@ -61,12 +61,6 @@ Route::match(['get', 'post'], '/logout', 'Auth\LoginController@logout')->name('l
 
 Route::get('/booktour/{id}','BookTourController@showData')->name('booktour');
 Route::post('/booktour/accept','BooktourController@booked');
-Route::get('/addT',function(){
-    $lsDes = Destination::all();
-    $lsCat = Category::all();
-    return view('admin/tour/add') -> with(['lsDes' => $lsDes, 'lsCat' => $lsCat]);
-});
-Route::post('/addT','Tourcontroller@save')->name('addT');
 Route::post('/payment/{id}/{time}','BookTourController@create');
 Route::get('/return-vnpay/{id}/{time}','BookTourController@return');
 Route::post('/update-des/{id}','DestinationController@update')->name('destination.update');

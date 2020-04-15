@@ -91,7 +91,7 @@
                                         <ul class="dropdown">
                                             <li><a href="{{route('admin')}}">Manage User</a></li>
                                             <li><a href="{{route('admin_tour.index')}}">Manage tour</a></li>
-                                            <li><a href="{{route('destination.index')}}">Manage destination</a></li>
+                                            <li><a href="{{route('destination')}}">Manage destination</a></li>
                                             <li><a href="{{route('category.index')}}">Manage category</a></li>
                                         </ul>
                                     </li>
