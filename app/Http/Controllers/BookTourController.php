@@ -14,14 +14,8 @@ use Illuminate\Support\Facades\Mail;
 class BookTourController extends Controller
 {
     public function showData($id){
-        if(Auth::check()){
             $tour = Tour::findOrFail($id);
             return view('bookTour')->with(['tour'=>$tour]);
-
-        }else{
-            return redirect('login');
-        }
-
 }
     public function booked(Request $request){
         $user_id=Auth::user()->full_name;
