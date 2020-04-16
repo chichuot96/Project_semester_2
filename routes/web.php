@@ -16,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect('index');
-});
+Route::get('/', 'HomeController@index');
 
 Route::resource('accounts', 'AccountsController');
 
@@ -32,10 +30,7 @@ Route::post('searchTour','TourController@search')->name('searchTour');
 Route::resource('category', 'CategoryController');
 Route::post('ckeditor/image_upload',
     'CKEditorController@upload')->name('upload');
-Route::get('/home',function (){
-        return redirect('index');
-    }
-);
+Route::get('/home','HomeController@index');
 //Route::get('/admin', 'AccountsController@index')->name('admin')->middleware('ad');
 
 
