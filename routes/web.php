@@ -26,7 +26,7 @@ Route::resource('accounts', 'AccountsController');
 Auth::routes();
 
 //Route::resource('admin_tour', 'TourController')->middleware('ad');
-Route::resource('destination', 'DestinationController');
+
 Route::post('searchDes','DestinationController@search')->name('searchDes');
 Route::post('searchTour','TourController@search')->name('searchTour');
 Route::resource('category', 'CategoryController');
@@ -77,6 +77,7 @@ Route::group(['middleware'=>'auth'],function (){
     Route::get('/return-vnpay/{id}/{time}','BookTourController@return');
 });
 Route::group(['middleware'=>'ad'],function(){
+    Route::resource('destination', 'DestinationController');
     Route::post('/update-des/{id}','DestinationController@update')->name('destination.update');
     Route::get('/destination_detail/{id}','HomeController@detailDes')->name('destination_detail');
     Route::resource('admin_tour', 'TourController');
