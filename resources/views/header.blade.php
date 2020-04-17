@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Tour Template</title>
+    <title>AmazingViet Tour</title>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,7 +57,7 @@
     <!-- Modernizr JS -->
     <script src="{{asset('js/modernizr-2.6.2.min.js')}}"></script>
     <!-- FOR IE9 below -->
-    <!--[if lt IE 9]>
+<!--[if lt IE 9]>
     <script src="{{asset('js/respond.min.js')}}"></script>
     <![endif]-->
     @stack('head')
@@ -121,7 +121,7 @@
     <aside id="colorlib-hero">
         <div class="flexslider">
             <ul class="slides">
-                <li style="background-image: url({{asset('images/img_bg_1.jpg')}});">
+                <li style="background-image: url('http://res.cloudinary.com/a123abc/image/upload/tam-coc-ninh-binh_tjxm73');">
                     <div class="overlay"></div>
                     <div class="container-fluid">
                         <div class="row">
@@ -134,7 +134,7 @@
                         </div>
                     </div>
                 </li>
-                <li style="background-image: url({{asset('images/img_bg_2.jpg')}});">
+                <li style="background-image: url('http://res.cloudinary.com/a123abc/image/upload/cau-the-huc-1_kw4rhk');">
                     <div class="overlay"></div>
                     <div class="container-fluid">
                         <div class="row">
@@ -147,7 +147,7 @@
                         </div>
                     </div>
                 </li>
-                <li style="background-image: url({{asset('images/img_bg_5.jpg')}});">
+                <li style="background-image: url('http://res.cloudinary.com/a123abc/image/upload/thac-ban-gioc_agvxev');">
                     <div class="overlay"></div>
                     <div class="container-fluids">
                         <div class="row">
@@ -160,7 +160,7 @@
                         </div>
                     </div>
                 </li>
-                <li style="background-image: url({{asset('images/img_bg_4.jpg')}});">
+                <li style="background-image: url('http://res.cloudinary.com/a123abc/image/upload/nha-hat-lon-ha-noi_uchx7r');">
                     <div class="overlay"></div>
                     <div class="container-fluid">
                         <div class="row">
@@ -177,10 +177,10 @@
         </div>
     </aside>
 </div>
-    <div>
-        @section('container')
-            @show
-    </div>
+<div>
+    @section('container')
+    @show
+</div>
 
 <footer id="colorlib-footer" role="contentinfo">
 
@@ -202,8 +202,8 @@
                 <h4>Book Now</h4>
                 <p>
                 <ul class="colorlib-footer-links">
-                    <li><a href="#">Flight</a></li>
-                    <li><a href="#">Hotels</a></li>
+                    <li><a href="{{route('tour.index')}}">Tours</a></li>
+                    <li><a href="{{route('des')}}">Destination</a></li>
                     <li><a href="#">Tour</a></li>
                     <li><a href="#">Car Rent</a></li>
                     <li><a href="#">Beach &amp; Resorts</a></li>
