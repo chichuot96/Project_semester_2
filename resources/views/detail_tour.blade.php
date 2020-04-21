@@ -23,6 +23,7 @@
                     </div>
                 </div>
 
+
                 <!-- SIDEBAR-->
                 <div class="col-md-4">
                     <div class="sidebar-wrap">
@@ -68,6 +69,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <a class="btn btn-primary" href="{{route('booktour',['id'=>$tour->id])}}"> Book tour</a>
